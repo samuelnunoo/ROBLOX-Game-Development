@@ -7,6 +7,7 @@ sudo apt-get update
 sudo apt install zip unzip
 
 # Install Lua
+yes|sudo apt-get install gcc
 sudo apt install build-essential libreadline-dev  
 mkdir lua_build
 cd lua_build
@@ -15,7 +16,8 @@ tar -zxf lua-5.3.4.tar.gz
 cd lua-5.3.4
 make linux test
 sudo make install
-cd ~
+cd ..
+cd ..
 
 # Install LuaRocks
 wget https://luarocks.org/releases/luarocks-3.3.1.tar.gz
