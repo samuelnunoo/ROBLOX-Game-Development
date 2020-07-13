@@ -8,12 +8,13 @@ sudo apt install zip unzip
 
 # Install Lua
 yes|sudo apt-get install gcc
-sudo apt install build-essential libreadline-dev  
+sudo apt install build-essential libreadline-dev
+yes| sudo apt-get install lib32ncurses5-dev
 mkdir lua_build
 cd lua_build
-curl -R -O http://www.lua.org/ftp/lua-5.3.4.tar.gz
-tar -zxf lua-5.3.4.tar.gz
-cd lua-5.3.4
+curl -R -O http://www.lua.org/ftp/lua-5.1.tar.gz
+tar -zxf lua-5.1.tar.gz
+cd lua-5.1
 make linux test
 sudo make install
 cd ..
@@ -56,12 +57,14 @@ sudo luarocks install luasocket
 wget https://github.com/LPGhatguy/lemur/archive/master.zip
 yes| unzip master.zip
 rm *.zip
+sudo mv lemur-master main/node_modules/lemur
 
 
 # Install TestEZ
 wget https://github.com/Roblox/testez/archive/master.zip
 yes| unzip master.zip
 rm *.zip
+sudo mv testez-master main/node_modules/testez
 
 
 
