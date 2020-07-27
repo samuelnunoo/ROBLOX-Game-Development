@@ -4,9 +4,9 @@
 		"$className": "DataModel",
 		"ServerScriptService": {
 			"$className": "ServerScriptService",
-			"TS": {
-				"$path": "out/server"
-			}
+			
+				"$path": "out/server/ServerScriptService"
+			
 		},
 		"ReplicatedStorage": {
 			"$className": "ReplicatedStorage",
@@ -16,18 +16,23 @@
 					"$path": "node_modules/@rbxts"
 				}
 			},
-			"TS": {
-				"$path": "out/shared"
-			}
+			
+		"$path": "out/client/ReplicatedStorage"
+		
 		},
 		"StarterPlayer": {
 			"$className": "StarterPlayer",
 			"StarterPlayerScripts": {
 				"$className": "StarterPlayerScripts",
-				"TS": {
-					"$path": "out/client"
-				}
+					"$path": "out/client/StarterPlayer"
+				
 			}
-		}
+		},
+		"ReplicatedFirst": {
+			"$className": "ReplicatedFirst",
+			"$path": "out/client/ReplicatedFirst"
+	
+			}
+		
 	}
 }

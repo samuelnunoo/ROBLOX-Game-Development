@@ -64,7 +64,7 @@ sudo mv lemur-master main/node_modules/lemur
 wget https://github.com/Roblox/testez/archive/master.zip
 yes| unzip master.zip
 rm *.zip
-sudo mv testez-master main/node_modules/testez
+sudo mv testez-master/src main/node_modules/testez
 
 
 

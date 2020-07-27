@@ -1,5 +1,8 @@
 package.path = package.path .. ";?/init.lua"
-local lemur = require("packages/lemur")
+local lemur = require("node_modules/lemur")
+local TestEZ = require('node_modules/testez')
+
+
 
 local habitat = lemur.Habitat.new()
 
