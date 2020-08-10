@@ -6,3 +6,14 @@ interface StarterGui extends BasePlayerGui {
 		};
 	};
 }
+
+interface LotGui extends BasePlayerGui {
+	ScreenGui: ScreenGui & {
+		Frame: Frame & {
+			Right: TextButton;
+			Left: TextButton;
+			Submit: TextButton;
+		};
+	};
+}
+

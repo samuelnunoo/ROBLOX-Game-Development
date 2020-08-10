@@ -9,6 +9,10 @@
 		"strict": true,
 		"target": "es6",
 		"typeRoots": [ "node_modules/@rbxts" ],
+		"paths": {
+			"storage": ["client/ReplicatedStorage/ClientState"],
+			
+		},
 
 		// required, configurable
 		"rootDir": "src",
