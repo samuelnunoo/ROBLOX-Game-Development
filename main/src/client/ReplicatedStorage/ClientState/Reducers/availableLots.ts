@@ -1,4 +1,4 @@
-import Rodux, {Action, AnyAction} from "@rbxts/rodux";
+import Rodux, { AnyAction} from "@rbxts/rodux";
 
 const Grids: Instance[] = game.Workspace.Grids.GetChildren()
 export type Lots = Map<Instance,Player|Boolean>
