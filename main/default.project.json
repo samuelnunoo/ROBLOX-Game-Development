@@ -5,7 +5,11 @@
 		"ServerScriptService": {
 			"$className": "ServerScriptService",
 			
-				"$path": "out/server"
+				"$path": "out/server",
+
+				"Tests":{
+					"$path": "out/tests"
+				}
 			
 		},
 		"ReplicatedStorage": {
