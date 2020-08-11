@@ -47,23 +47,23 @@ class LotUI extends Roact.Component<Props, MyComponentState> {
       <screengui>
         <frame
             Size = {new UDim2(0,591,0,340)}
-            Position = {new UDim2(0.341,0,0.238,0)}
+            Position = {new UDim2(0,341,0,238)}
             BackgroundTransparency = { 1 }
         >
 
           <LotButton
           callback = { (key: string) => this.setIndex(key) }
-          position = { new UDim2(0.037,0,0.756,0)}
+          position = { new UDim2(0,34,0,100)}
           text = { "Left" } />
 
            <LotButton
           callback = { (key:string) => this.setIndex(key) }
-          position = { new UDim2(0,751,0,756)}
+          position = { new UDim2(0,751,0,100)}
           text = { "Right" } />
 
            <LotButton
           callback = { () => this.requestLot() }
-          position = { new UDim2(0,391,0,756)}
+          position = { new UDim2(0,391,0,100)}
           text = { "Choose" } />
 
         
