@@ -1,8 +1,10 @@
 import {combineReducers} from "@rbxts/rodux";
-import availableLots from "../../../client/ReplicatedStorage/ClientState/Reducers/availableLots"
+import availableLots, { Lots } from "../../../client/ReplicatedStorage/ClientState/Reducers/availableLots"
 
+export interface IReducer {
+    availableLots: Lots
+}
 
-
-export default combineReducers({
+export default combineReducers<IReducer>({
     availableLots
 })

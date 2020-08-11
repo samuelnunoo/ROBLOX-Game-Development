@@ -16,7 +16,7 @@ function Button (props: Props) {
              Position = {props.position}
              Size = {props.size}
              Event = {{
-                 MouseButton1Click: ():Fn => props.callback
+                 MouseButton1Click: ():Fn => props.callback(props.text)
              }} />)
 }
 

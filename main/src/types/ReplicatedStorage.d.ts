@@ -5,6 +5,7 @@ interface ReplicatedStorage extends Instance {
 	};
 	getLots: RemoteFunction;
 	pushLot: RemoteEvent;
+	LotRequest: RemoteFunction
 	clientRelay: RemoteEvent;
 	UI: Folder & {
 		LotUIController: ModuleScript;

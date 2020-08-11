@@ -23,19 +23,17 @@ const defaults = {
 
 class LotUI extends Roact.Component<Props, MyComponentState> {
   private running: boolean = false;
+  private lotRequest: RemoteFunction = game.GetService("ReplicatedStorage").LotRequest
+
 
   constructor() {
     super(defaults);
 
-    const lots = this.getLots(this.props.isTaken as Lots)
-
     this.setState({
       ...defaults,
-      currentTime: 0,
       index: 0,
-      lots: lots,
-      isTaken: this.props.isTaken,
-      currentLot: lots[0]
+      lots: this.props.lots,
+      currentLot: this.props.lots[0]
     } as MyComponentState);
 
     if (this.state.isTaken) {
@@ -48,25 +46,25 @@ class LotUI extends Roact.Component<Props, MyComponentState> {
     return (
       <screengui>
         <frame
-            Size = {new UDim2(0,383,0,235)}
-            Position = {new UDim2(0,178,0,314)}
+            Size = {new UDim2(0,591,0,340)}
+            Position = {new UDim2(0.341,0,0.238,0)}
+            BackgroundTransparency = { 1 }
         >
 
           <LotButton
-   
           callback = { (key: string) => this.setIndex(key) }
-          position = { new UDim2(0,25,0,25)}
-          text = { "Left"} />
+          position = { new UDim2(0.037,0,0.756,0)}
+          text = { "Left" } />
 
            <LotButton
           callback = { (key:string) => this.setIndex(key) }
-          position = { new UDim2(0,25,0,25)}
-          text = { "Right"} />
+          position = { new UDim2(0,751,0,756)}
+          text = { "Right" } />
 
            <LotButton
-          callback = { () => undefined }
-          position = { new UDim2(0,250,0,25)}
-          text = { "Choose"} />
+          callback = { () => this.requestLot() }
+          position = { new UDim2(0,391,0,756)}
+          text = { "Choose" } />
 
         
         </frame>
@@ -74,37 +72,62 @@ class LotUI extends Roact.Component<Props, MyComponentState> {
     );
   }
 
-
-  private setIndex(key:string) {
+  public didUpdate() {
+    if (this.props.lots !==  this.state.lots) {
+      this.setState({
+        lots: this.props.lots
+      })
+    }
+ 
+  }
+  private setIndex(key:string): void {
     const direction = key === "Left" ? 1 : -1
     const index = this.state.index
     const lot = this.state.lots
-    const newIndex = index + direction
+    let newIndex = index + direction
 
-    if (newIndex >= lot.size()) return 0
-    if (newIndex < 0) return lot.size() - 1
+    if (newIndex >= lot.size()) newIndex = 0
+    if (newIndex < 0) newIndex = lot.size() - 1
 
 
     this.setState({
-      index: newIndex
+      index: newIndex,
+      currentLot: lot[newIndex]
     })
 
+    this.setCamera()
+
+
+
   }
 
-  private getLots(lots: Lots) {
-    const newLots = []
-    for (const [key,value] of lots.entries()) {
-      if (value === false) newLots.push(key)
-    }
+  private requestLot() {
+    const currentLot = this.state.currentLot
+    const response: boolean = this.lotRequest.InvokeServer(currentLot)
+    print(response)
 
-    return newLots
   }
+
+  private setCamera() {
+    const camera = game.Workspace.CurrentCamera as Camera
+    const current = this.state.currentLot
+
+    camera.CameraSubject = current as BasePart
+  }
+}
+
+function getLots(lots: Lots): Instance[] {
+  const newLots = []
+  for (const [key,value] of lots.entries()) {
+    if (value === false) newLots.push(key)
+  }
+
+  return newLots
 }
 
 export default roactRedux.connect((state: ClientStore) => {
   return {
     ...defaults,
-    isTaken: state.availableLots,
-    lots: game.Workspace.Grids.GetChildren(),
+    lots: getLots(state.availableLots)
   } as Props;
 })(LotUI);
