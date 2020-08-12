@@ -3,6 +3,7 @@ interface ReplicatedStorage extends Instance {
 		module: ModuleScript;
 		["module.spec"]: ModuleScript;
 	};
+	buildEvent: RemoteEvent;
 	getLots: RemoteFunction;
 	pushLot: RemoteEvent;
 	LotRequest: RemoteFunction

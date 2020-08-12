@@ -1,6 +1,6 @@
 import Redux, { AnyAction } from "@rbxts/rodux";
 
-interface values {
+export interface values {
     id: number;
     lots: Map<string, boolean>
     currency: number | 0;
