@@ -28,7 +28,6 @@ export const offset = (lot:BasePart) => (object:BasePart) => {
 
     return isValid ? new Vector3(diffX, 0, diffZ) : new Vector3(0,0,0)
 }
-
 export const place = (lot:BasePart) => (object:Model) => {
     const main = object.PrimaryPart as BasePart
     const translation = offset(lot)(main)
@@ -36,4 +35,10 @@ export const place = (lot:BasePart) => (object:Model) => {
 
 }
 
+export const rotate = (object:BasePart, direction: 1 | -1) => {
+    const interval = direction === 1 ? 5 : -5
+    const rot = object.Orientation
+
+    return new Vector3(0,rot.Y + interval,0)
+}
 

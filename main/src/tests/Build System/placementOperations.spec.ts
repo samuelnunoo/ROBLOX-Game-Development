@@ -97,6 +97,46 @@ export = () => {
         })
     })
 
-    
+    describe("Rotation", () => {
+        const part = new Instance("Part")
+        part.Size = new Vector3(10,10,10)
+        part.Position = new Vector3(0,0,0)
+      
+
+        it("Orientation is Default", () => {
+        part.Orientation = new Vector3(0,0,0)
+        expect(part.Orientation).to.equal(new Vector3(0,0,0))
+        })
+
+        it("Rotate Left", () => {
+            part.Orientation = placement.rotate(part,1)
+
+            expect(part.Orientation).to.equal(new Vector3(0,5,0))
+        })
+
+        it("Rotate Left Twice", () => {
+            part.Orientation = new Vector3(0,0,0)
+            part.Orientation = placement.rotate(part,1)
+            part.Orientation = placement.rotate(part,1)
+            
+            expect(part.Orientation).to.equal(new Vector3(0,10,0))
+        })
+
+        it("Rotate Right", () => {
+            part.Orientation = new Vector3(0,0,0)
+            part.Orientation = placement.rotate(part,-1)
+
+            expect(part.Orientation).to.equal(new Vector3(0,-5,0))
+        })
+
+        it("Rotate Right Twice ", () => {
+            part.Orientation = new Vector3(0,0,0)
+            part.Orientation = placement.rotate(part,-1)
+            part.Orientation = placement.rotate(part,-1)
+
+            expect(part.Orientation).to.equal(new Vector3(0,-10,0))
+        })
+
+    })
     
 }
