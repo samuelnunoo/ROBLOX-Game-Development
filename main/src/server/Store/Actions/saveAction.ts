@@ -11,12 +11,12 @@ export function updateObject(id:string, item:string, add:boolean) {
         }
     } as updateObjects
 }
-export function updateType(id:string, types:string) {
+export function updateType(id:string, typeId:string) {
     return {
         type: "lotType",
         payload: {
             id,
-            type:types
+            typeId
         }
     } as setType
 }

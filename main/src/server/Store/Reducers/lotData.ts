@@ -5,7 +5,7 @@ import Rodux, {AnyAction} from "@rbxts/rodux";
 export type ILotStore = Map<string, lotData>
 interface lotData {
     objects: Map<string,boolean>;
-    type: string;
+    typeId: string;
     instance: Instance;
     owner: number
 }
@@ -16,12 +16,12 @@ export interface lotStore {
 
 //----- Setup Information --- // 
 const defaultData = (player:Player,instance:Instance): lotData => {
-    const type = instance.Name
+    const typeId = instance.Name
     const map: Map<string,boolean> = new Map()
 
     return {
         objects: map,
-        type,
+        typeId,
         instance,
         owner: player.UserId
         
@@ -48,7 +48,7 @@ export interface setType extends BaseAction {
     type: "lotType";
     payload: {
         id: string;
-        type: string;
+        typeId: string;
     }
 }
 export interface newSave extends BaseAction {
@@ -88,13 +88,13 @@ const lotReducer = Rodux.createReducer<lotStore, "byId",  updateObjects|setType|
         return state 
     },
     lotType: (state, action) => {
-        const {id, type} = action.payload
+        const {id, typeId} = action.payload
 
         const lotData = state.get(id) 
 
         if (lotData) {
             const copy = Object.deepCopy(lotData)
-            copy.type = type 
+            copy.typeId = typeId
 
             const newState = Object.deepCopy(state)
             newState.set(id,copy)
