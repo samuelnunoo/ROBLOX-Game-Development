@@ -30,8 +30,10 @@ export const offset = (lot:BasePart) => (object:BasePart) => {
 }
 export const place = (lot:BasePart) => (object:Model) => {
     const main = object.PrimaryPart as BasePart
-    const translation = offset(lot)(main)
-    buildRemote.FireServer('place', main, translation)
+    const id = object.Name
+    const pos = main.Position
+
+    buildRemote.FireServer(id, pos)
 
 }
 
