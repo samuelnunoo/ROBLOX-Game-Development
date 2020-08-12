@@ -1,13 +1,15 @@
 import Rodux, {AnyAction} from "@rbxts/rodux";
 
 //---- Type Information --- //
+
+export type ILotStore = Map<string, lotData>
 interface lotData {
     objects: Map<string,boolean>;
     type: string;
     instance: Instance;
     owner: number
 }
-interface lotStore {
+export interface lotStore {
     byId:  Map<string,lotData>
     allIds: string[]
 }
