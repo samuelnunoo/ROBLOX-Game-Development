@@ -1,6 +1,7 @@
 import Rodux, {AnyAction} from "@rbxts/rodux"
 
 export type activeLots = Map<Player,Instance|false>
+
 export interface ActiveLotAction extends AnyAction {
     type: "activeLot";
     player: Player;
