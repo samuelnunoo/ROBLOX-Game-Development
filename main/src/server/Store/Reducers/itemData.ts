@@ -3,7 +3,7 @@ import Rodux, { AnyAction } from "@rbxts/rodux";
 // -- Type Definitions -- //
 export interface ItemProperties {
     id: string;
-    template: string;
+    model : Instance;
     style: Map<string,string>;
     rarity: "High" | "Low" | "Medium";
     owner: string;
@@ -29,7 +29,7 @@ export interface ItemStore {
          id: string;
          properties: {
             id: string;
-            template: string;
+            model: Instance;
             style: Map<string,string>;
             rarity: "High" | "Low" | "Medium";
             owner: string;
@@ -59,7 +59,7 @@ const itemReducer = Rodux.createReducer<ItemStore,"byId",updateItem|removeItem>(
     updateItem: (state, action) => {
         const {id, properties } = action.payload
         const copyState = Object.deepCopy(state)
-        copyState.set(id,properties)
+        copyState.set(id, properties)
 
         return copyState
     },

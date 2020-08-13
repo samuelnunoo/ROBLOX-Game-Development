@@ -6,7 +6,10 @@ export interface values {
     lots: Map<string, boolean>
     currency: number | 0;
     inventory: Map<string, boolean>;
-    activeLot: Instance | undefined;
+    activeLot: {
+        lot: BasePart | undefined;
+        save: string | undefined;
+    }
 }
 export type playerId = Map<number,values>
 export interface playerReducer {
@@ -20,7 +23,9 @@ function defaultData (id:number): values {
         id,
         lots: new Map(),
         currency: 0,
-        activeLot: undefined,
+        activeLot: {
+            lot:undefined,
+            id: undefined},
         inventory: new Map()
     } as values
 }
@@ -56,22 +61,20 @@ export interface updateInventory extends baseSystem {
     }
 
 }
-
 export interface addPlayer extends AnyAction {
     type: "addPlayer";
     player: Player;
 }
-
 export interface activeLot extends baseSystem {
     type: "activeLot";
     payload: {
         id: number;
-        lot: Instance | undefined;
+        save: string;
+        lot: BasePart | undefined;
     }
 }
 
 // -- Reducer -- //
-
 const playerData = Redux.createReducer<playerReducer, "byId", changeCurrency|updateLot|updateInventory|addPlayer|activeLot>(map, {
     updateCurrency: (state, action) => {
         const {change, id} = action
@@ -113,10 +116,7 @@ const playerData = Redux.createReducer<playerReducer, "byId", changeCurrency|upd
             copyState.set(id,dataCopy)
 
             return copyState
-            
-
-          
-
+        
         }
 
         return state 
@@ -169,12 +169,12 @@ const playerData = Redux.createReducer<playerReducer, "byId", changeCurrency|upd
         return state 
     },
     activeLot: (state, action) => {
-        const {lot, id} = action.payload
+        const {lot, save, id} = action.payload
         const isPlayer = state.get(id)
 
         if (isPlayer) {
                 const copyPlayer = Object.deepCopy(isPlayer)
-                copyPlayer.activeLot = lot
+                copyPlayer.activeLot = {lot, save}
 
                 const copyState = Object.deepCopy(state)
                 copyState.set(id, copyPlayer)
@@ -186,7 +186,5 @@ const playerData = Redux.createReducer<playerReducer, "byId", changeCurrency|upd
         return state 
     }
 })
-
-
 
 export default playerData

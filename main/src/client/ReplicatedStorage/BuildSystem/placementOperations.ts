@@ -15,13 +15,7 @@ export const boundary = (value:BasePart) => {
 
 }
 export const offset = (lot:BasePart) => (object:BasePart) => {
-
-    const {left, right, top, bottom} = boundary(lot)
-    const compare = boundary(object)
-
-    const horizontal = compare.left >= left && compare.right <= right
-    const vertical = compare.bottom >= bottom && compare.top <= top
-    const isValid = horizontal && vertical
+    const isValid = isInBounds(lot)(object)
 
     const diffX = lot.Position.X - object.Position.X
     const diffZ = lot.Position.Z - object.Position.Z
@@ -36,11 +30,18 @@ export const place = (lot:BasePart) => (object:Model) => {
     buildRemote.FireServer(id, pos)
 
 }
-
 export const rotate = (object:BasePart, direction: 1 | -1) => {
     const interval = direction === 1 ? 5 : -5
     const rot = object.Orientation
 
     return new Vector3(0,rot.Y + interval,0)
 }
+export const isInBounds = (lot: BasePart) => (object:BasePart) => {
+    const {left, right, top, bottom} = boundary(lot)
+    const obj = boundary(object)
 
+    const horizontal = obj.left >= left && obj.right <= right 
+    const vertical = obj.bottom >= bottom && obj.top <= top 
+
+    return horizontal && vertical
+}

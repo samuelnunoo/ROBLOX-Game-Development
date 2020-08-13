@@ -1,32 +1,30 @@
 import {ItemProperties, updateItem, removeItem} from "../Reducers/itemData"
 const HttpService = game.GetService("HttpService")
 
-const updateAction = (id:string,template:string, style: Map<string,string>, 
-    rarity: "High"| "Low" | "Medium", owner:string, lotSave: undefined | string, 
-    offset: undefined | Vector3, orientation: undefined | Vector3):updateItem => {
+export interface payload {
+    id: string;
+    model: Instance;
+    style: Map<string,string>;
+    rarity: "High" | "Low" | "Medium";
+    owner:string;
+    lotSave: undefined | string;
+    offset: undefined | Vector3;
+    orientation: undefined | Vector3;
+}
+export const updateAction = (data:payload):updateItem => {
 
-
+    const id = data.id
     return {
         type: "updateItem",
         payload: {
             id,
-            properties: {
-                id,
-                template,
-                style,
-                rarity,
-                owner,
-                lotSave,
-                offset,
-                orientation
-            } as ItemProperties
+            properties: data as ItemProperties
         }
     }
 
 
 }
-
-const removeItem = (id:string): removeItem => {
+export const removeAction = (id:string): removeItem => {
     return {
         type: "removeItem",
         payload: {
