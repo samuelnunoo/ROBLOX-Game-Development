@@ -1,28 +1,32 @@
 import Redux, { AnyAction } from "@rbxts/rodux";
 
+// -- Type Definitions -- //
 export interface values {
     id: number;
     lots: Map<string, boolean>
     currency: number | 0;
-    inventory: Map<string, boolean>
+    inventory: Map<string, boolean>;
+    activeLot: Instance | undefined;
 }
-
-function defaultData (id:number): values {
-    return {
-        id,
-        lots: new Map(),
-        currency: 0,
-        inventory: new Map()
-    } as values
-}
-
 export type playerId = Map<number,values>
-
 export interface playerReducer {
     byId: playerId
     allIds: string[]
 }
 
+// -- Setup Information -- //
+function defaultData (id:number): values {
+    return {
+        id,
+        lots: new Map(),
+        currency: 0,
+        activeLot: undefined,
+        inventory: new Map()
+    } as values
+}
+const map: Map<number,values> = new Map()
+
+// -- Actions -- //
 interface baseSystem extends AnyAction {
     id: number 
 }
@@ -58,8 +62,17 @@ export interface addPlayer extends AnyAction {
     player: Player;
 }
 
-const map: Map<number,values> = new Map()
-const playerData = Redux.createReducer<playerReducer, "byId", changeCurrency|updateLot|updateInventory|addPlayer>(map, {
+export interface activeLot extends baseSystem {
+    type: "activeLot";
+    payload: {
+        id: number;
+        lot: Instance | undefined;
+    }
+}
+
+// -- Reducer -- //
+
+const playerData = Redux.createReducer<playerReducer, "byId", changeCurrency|updateLot|updateInventory|addPlayer|activeLot>(map, {
     updateCurrency: (state, action) => {
         const {change, id} = action
         const player = state.get(id)
@@ -152,6 +165,23 @@ const playerData = Redux.createReducer<playerReducer, "byId", changeCurrency|upd
             return newState
             
         }
+
+        return state 
+    },
+    activeLot: (state, action) => {
+        const {lot, id} = action.payload
+        const isPlayer = state.get(id)
+
+        if (isPlayer) {
+                const copyPlayer = Object.deepCopy(isPlayer)
+                copyPlayer.activeLot = lot
+
+                const copyState = Object.deepCopy(state)
+                copyState.set(id, copyPlayer)
+
+                return copyState
+        }
+
 
         return state 
     }

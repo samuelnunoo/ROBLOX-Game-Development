@@ -1,6 +1,7 @@
 import store from "../Store/Store"
 import { Store, AnyAction } from "@rbxts/rodux"
 import { IReducer } from "./Reducers"
+import { ItemProperties } from "./Reducers/itemData"
 const buildRemote = game.GetService("ReplicatedStorage").buildEvent
 
 
@@ -11,9 +12,22 @@ export {}
 const checkOwnership = (store:Store<IReducer, AnyAction>) => (player:Player, itemID:string) => {
     const state  = store.getState()
     const playerData = state.playerData.get(player.UserId)
+
     if (playerData) {
-        const item = playerData.inventory.get(itemID)
-        if (item) {
+        const inInventory = playerData.inventory.get(itemID)
+
+        if (inInventory) {
+            const itemData = state.itemData.get(itemID) as ItemProperties
+            const notPlaced = itemData && itemData?.lotSave !== undefined 
+
+            if (notPlaced) {
+
+                const activeLot = 
+            }
+
+
+
+
         
 
         }
