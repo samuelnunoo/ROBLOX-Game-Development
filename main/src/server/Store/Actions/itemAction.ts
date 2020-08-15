@@ -3,7 +3,7 @@ const HttpService = game.GetService("HttpService")
 
 export interface payload {
     id: string;
-    model: Instance;
+    model: Model;
     style: Map<string,string>;
     rarity: "High" | "Low" | "Medium";
     owner:string;

@@ -1,0 +1,19 @@
+{
+  "name": "@rbxts/rodash",
+  "version": "1.0.0",
+  "description": "A module that provides typings for the library RoDash. Currently a WIP.",
+  "main": "out/rodash/init.lua",
+  "scripts": {
+    "prepublishOnly": "rbxtsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "types": "out/index.d.ts",
+  "devDependencies": {
+    "@rbxts/types": "^1.0.388"
+  }
+}

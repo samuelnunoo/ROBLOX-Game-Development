@@ -25,7 +25,7 @@ function defaultData (id:number): values {
         currency: 0,
         activeLot: {
             lot:undefined,
-            id: undefined},
+            save: undefined},
         inventory: new Map()
     } as values
 }
@@ -33,10 +33,9 @@ const map: Map<number,values> = new Map()
 
 // -- Actions -- //
 interface baseSystem extends AnyAction {
-    id: number 
+    id: number;
 }
-
-export interface changeCurrency extends baseSystem{
+export interface changeCurrency extends baseSystem {
     type: "updateCurrency";
     change: number;
 
@@ -69,7 +68,7 @@ export interface activeLot extends baseSystem {
     type: "activeLot";
     payload: {
         id: number;
-        save: string;
+        save: string | undefined;
         lot: BasePart | undefined;
     }
 }
@@ -99,10 +98,10 @@ const playerData = Redux.createReducer<playerReducer, "byId", changeCurrency|upd
         const { id } = action
         const { lotId, add} = action.payload
 
-        const data = state.get(id)
+        const player = state.get(id)
 
-        if (data) {
-            const dataCopy = Object.deepCopy(data)
+        if (player) {
+            const dataCopy = Object.deepCopy(player)
             const { lots } = dataCopy
 
             if (add) {

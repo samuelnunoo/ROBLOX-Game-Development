@@ -3,7 +3,7 @@ import Rodux, { AnyAction } from "@rbxts/rodux";
 // -- Type Definitions -- //
 export interface ItemProperties {
     id: string;
-    model : Instance;
+    model : Model;
     style: Map<string,string>;
     rarity: "High" | "Low" | "Medium";
     owner: string;
@@ -29,7 +29,7 @@ export interface ItemStore {
          id: string;
          properties: {
             id: string;
-            model: Instance;
+            model: Model;
             style: Map<string,string>;
             rarity: "High" | "Low" | "Medium";
             owner: string;
@@ -48,8 +48,6 @@ export interface ItemStore {
          id: string;
      }
  }
-
-
 // -- Setup Information -- //
 const map:IItem = new Map()
 

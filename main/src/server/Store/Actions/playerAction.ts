@@ -34,12 +34,13 @@ export function playerAction (player:Player) {
     }
 }
 
-export function setActiveLot (player:Player, lot:Instance): activeLot {
+export function setActiveLot (player:Player, lot:Instance, save:string): activeLot {
     return {
         type: "activeLot",
         payload: {
             id: player.UserId,
-            lot
+            lot,
+            save
         }
 
     } as activeLot

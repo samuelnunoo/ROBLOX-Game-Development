@@ -23,15 +23,15 @@
 				}
 			},
 			"$ignoreUnknownInstances":true,
-			
-		"$path": "out/client/ReplicatedStorage"
+		
+			"$path": "out/client/ReplicatedStorage"
 		
 		},
 		"ReplicatedFirst": {
 			"$className": "ReplicatedFirst",
 			"$path": "out/client/ReplicatedFirst"
 	
-			}
-		
+		}	
 	}
 }
+

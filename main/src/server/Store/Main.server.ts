@@ -13,31 +13,9 @@ const newPlayer = <T>(store:Store<T, AnyAction>) => (plr:Player): void => {
 const createPlayer = newPlayer(store)
 
 
-// -- Check Logic
-const isValid = (player: Player, object:string, position: Vector3) => {
-    const validtype = typeOf(object) == "string"
-    && typeOf(position) == "Vector3"
-
-
-// get Active Lot
-// object is in inventory
-// Position is Valid
-
-
-
 
 
 
 
 players.ChildAdded.Connect( (plr) => createPlayer(plr as Player))
-
-
-
-
-
-
-
-
-
-
 
