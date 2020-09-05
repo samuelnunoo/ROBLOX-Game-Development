@@ -8,6 +8,8 @@ export = () => {
         const part = new Instance("Part")
         part.Size = new Vector3(20,400,30)
         part.Position = new Vector3(200,0,300)
+
+     
         const result = placement.boundary(part)
 
         it('left should equal 190 ', () => {

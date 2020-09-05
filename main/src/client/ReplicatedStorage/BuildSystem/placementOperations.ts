@@ -1,6 +1,7 @@
 const buildRemote = game.GetService("ReplicatedStorage").buildEvent
 
 export const boundary = (value:BasePart) => {
+
     const sX = value.Size.X
     const sZ = value.Size.Z
     const pX = value.Position.X

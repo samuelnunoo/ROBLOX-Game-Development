@@ -1,19 +1,19 @@
 import Rodux, { AnyAction} from "@rbxts/rodux";
 
 //-- Types -- //
-export type Lots = Map<Instance,Player|Boolean>
+export type Lots = Map<Instance,Player|false>
 
 // -- Actions -- //
 export interface LotAction extends AnyAction {
     type: "lots";
     lot: Instance;
-    value: Player | Boolean;
+    value: Player | false;
 }
 
 // -- Initial Setup -- //
 const Grids: Instance[] = game.Workspace.Grids.GetChildren()
-const initLots: (folder: Instance[]) => Lots = (folder: Instance[]) => {
-    const map: Map<Instance, boolean> = new Map()
+const initLots = (folder: Instance[]) => {
+    const map: Map<Instance, false> = new Map()
     folder.forEach( item => map.set(item,false))
 
     return map

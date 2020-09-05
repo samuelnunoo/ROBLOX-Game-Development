@@ -11,13 +11,9 @@ const newPlayer = <T>(store:Store<T, AnyAction>) => (plr:Player): void => {
 
 export = () => {
     describe("Store Tests", () => {
-   
-
         it('can load', () => {
             expect(store).to.equal(store)
         })
-
-        
     })
 
     describe('playerData', () => {
@@ -37,7 +33,7 @@ export = () => {
 
         it("lots should be empty", () => {
             const data = store.getState().playerData.get(plr.UserId) as values
-            
+        
             expect(data.lots.entries().size()).to.equal(0)
         })
 

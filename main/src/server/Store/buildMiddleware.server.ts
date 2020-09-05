@@ -4,6 +4,7 @@ import { IReducer } from "./Reducers"
 import { ItemProperties } from "./Reducers/itemData"
 import * as placement from "client/ReplicatedStorage/BuildSystem/placementOperations"
 import {updateAction} from "../Store/Actions/itemAction"
+import { values } from "./Reducers/playerData"
 
 const buildRemote = game.GetService("ReplicatedStorage").buildEvent
 export {}
@@ -16,7 +17,7 @@ const checkOwnership = (state: IReducer) => (player:Player, itemID:string) => {
 
         if (inInventory) {
             const itemData = state.itemData.get(itemID) as ItemProperties
-            const notPlaced = itemData && itemData?.lotSave !== undefined 
+            const notPlaced = itemData ? itemData.lotSave !== undefined : false
 
             if (notPlaced) {
 
@@ -40,21 +41,21 @@ const checkOwnership = (state: IReducer) => (player:Player, itemID:string) => {
 }
 
 const prepareData = (state:IReducer) => (itemID:string, player: Player, pos: Vector3, rot: Vector3) => {
-    const playerData = state.playerData.get(player.UserId)
-    const item = state.itemData.get(itemID)?.model.PrimaryPart as  BasePart
-    const activeLot =  playerData?.activeLot.lot as BasePart
+    const playerData = state.playerData.get(player.UserId) as values
+    const isExist = state.itemData.get(itemID) as ItemProperties
+    const activeLot =  playerData.activeLot.lot as BasePart
+    const item = isExist.model.PrimaryPart as BasePart
     
-    item.Position = pos
+    item.Position = pos 
     item.Orientation = new Vector3(0, rot.Y, 0)
 
     return {item, activeLot}
 
-
-
+   
 }
 
 const buildRequest = (store: Store<IReducer, AnyAction>) => (player:Player, itemID:string, pos: Vector3, rot: Vector3) => {
-    const validTypes = typeOf(itemID) == "string" && typeOf(pos) == "Vector3"
+    const validTypes = typeOf(itemID) === "string" && typeOf(pos) === "Vector3"
     const state = store.getState()
   
     if (validTypes) {

@@ -1,6 +1,6 @@
-class Wrapper {
-    private _value: any
-    constructor(value: any) {
+class Wrapper <T> {
+    private _value: T
+    constructor(value: T) {
         this._value = value
     }
     static of(a:any) {
@@ -56,82 +56,70 @@ export class IO {
     }
 }
 
-export class Maybe {
-    protected _value: unknown;
-    static just(a:unknown) {
-        return new Just(a)
+
+
+
+export type Option = null 
+const isNil = (x:any): x is undefined => x === undefined 
+
+
+export class Maybe<T> {
+
+    private wrappedValue: T | undefined 
+
+    private constructor( private value: T | undefined)  {
+        this.wrappedValue = value 
     }
 
-    static nothing() {
-        return new Nothing()
+    public map<U>( fn: (x:T) => U): Maybe<U> {
+        if (!isNil(this.wrappedValue)) {
+            return new Maybe(fn(this.wrappedValue))
+        }
+        return new Maybe<U>(undefined)
+
     }
 
-    static fromNullable(a:unknown): any {
-        return a !== undefined ? Maybe.just(a) : Maybe.nothing()
+    public filter(f: (arg:T) => boolean): Maybe<T> | Maybe<undefined> {
+        if (!isNil(this.wrappedValue)) {
+            if (f(this.wrappedValue)) return new Maybe(this.wrappedValue)
+        }
+
+        return new Maybe(undefined)
     }
 
-    static of(a:unknown) {
-        return this.just(a)
+    static some<T> (value:T) {
+        if (!value) {
+            throw error("Provided value must not be empty")
+        }
+        return new Maybe(value)
     }
 
-    get isNothing() {
-        return false;
-    }
-}
-class Just extends Maybe{
-    constructor(value:unknown) {
-        super()
-        this._value = value 
+    static none () {
+        return new Maybe(undefined)
     }
 
-    get value() {
-        return this._value
+    static fromNullable<T>(value: T): Maybe<T> | Maybe<undefined>  {
+        return !isNil(value) ?  Maybe.some(value) : Maybe.none()
     }
 
-    map(f:Fn) {
-        return Maybe.fromNullable(f(this._value))
+    getOrElse<U>(defaultValue: U) {
+        return isNil(this.wrappedValue) ? defaultValue : this.wrappedValue
     }
 
-    getOrElse() {
-        return this._value
+    get isNull () {
+        return this.value === null 
     }
 
-    filter(f:Fn){
-        Maybe.fromNullable(f(this._value) ? this._value : undefined)
-    }
-
-    chain(f:Fn) {
+     chain(f:Fn): ReturnType<typeof f> {
         return f(this.value)
     }
 
-    toString() {
-        return `Maybe.Just(${this._value})`
+    toString(): string {
+        return `Maybe.Just(${this.value})`
     }
+
+
+
+
 }
-class Nothing extends Maybe {
-    map(f:Fn) {
-        return this;
-    }
-
-    get value() {
-        throw " Can't extract the value of a Nothing"
-    }
-
-    getOrElse (other:unknown) {
-        return other 
-    }
-
-    filter(f:Fn) {
-        return this._value
-    }
-
-    chain(f:Fn) {
-        return this
-    }
-
-    toString() {
-        return 'Maybe.Nothing'
-    }
-}
-
 
