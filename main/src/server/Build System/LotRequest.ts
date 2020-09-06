@@ -22,8 +22,8 @@ export const isValid = ({state, player, lot}:payload): boolean => {
         .and(Option.some(true))
         .unwrapOr(false)
       
-    const validLot: boolean = Option.some(state.availableLots.get(lot as Instance) as Player)
-        .contains(player)
+    const validLot: boolean = Option.some(state.availableLots.get(lot as Instance) as boolean)
+        .contains(false)
      
     return typeOf(lot) === "Instance" && validLot && playerData
     
@@ -45,7 +45,6 @@ export const setGameState = ({state, player, lot}:payload): boolean => {
     return true 
 
 }
-
 
 export default function lotRequest(player:Player, lot:unknown): boolean {
     const state =  Option.some({state:store.getState(), player, lot} as payload)

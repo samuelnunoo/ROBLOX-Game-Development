@@ -13,9 +13,5 @@ const newPlayer = <T>(store:Store<T, AnyAction>) => (plr:Player): void => {
 const createPlayer = newPlayer(store)
 
 
-
-
-
-
 players.ChildAdded.Connect( (plr) => createPlayer(plr as Player))
 

@@ -1,4 +1,5 @@
 import Redux, { AnyAction } from "@rbxts/rodux";
+import { Option } from "@rbxts/rust-option-result";
 
 // -- Type Definitions -- //
 export interface values {
@@ -9,7 +10,8 @@ export interface values {
     activeLot: {
         lot: BasePart | undefined;
         save: string | undefined;
-    }
+    };
+    activeItem: string | false;
 }
 export type playerId = Map<number,values>
 export interface playerReducer {
@@ -23,6 +25,7 @@ function defaultData (id:number): values {
         id,
         lots: new Map(),
         currency: 0,
+        activeItem: false,
         activeLot: {
             lot:undefined,
             save: undefined},
@@ -73,8 +76,14 @@ export interface activeLot extends baseSystem {
     }
 }
 
+export interface activeItem extends baseSystem {
+    type: "activeItem";
+    payload: {
+        itemId: string;
+    }
+}
 // -- Reducer -- //
-const playerData = Redux.createReducer<playerReducer, "byId", changeCurrency|updateLot|updateInventory|addPlayer|activeLot>(map, {
+const playerData = Redux.createReducer<playerReducer, "byId",activeItem| changeCurrency|updateLot|updateInventory|addPlayer|activeLot>(map, {
     updateCurrency: (state, action) => {
         const {change, id} = action
         const player = state.get(id)
@@ -183,7 +192,20 @@ const playerData = Redux.createReducer<playerReducer, "byId", changeCurrency|upd
 
 
         return state 
+    },
+    activeItem: (state, action) => {
+        const {id, payload} = action
+
+        const playerData = Option.some(state.get(id) as values)
+            .map((data:values) => Object.deepCopy(data))
+            .filter((data:values) => data.inventory.get(payload.itemId) === true)
+            .map((data:values) => { data.activeItem = payload.itemId; return data})
+            .map((data:values) => Object.copy(state).set(id,data))
+            .unwrapOr(state)
+
+        return playerData
     }
+
 })
 
 export default playerData
