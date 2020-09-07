@@ -46,7 +46,7 @@ describe('ItemRequest', () => {
       operations.ItemRequest(store)('nope',player)
 
       const result = store.getState().playerData.get(player.UserId)!.activeItem
-      expect(result).to.equal(undefined)
+      expect(result).to.equal(false)
   })
 
   it('isInInventory should return true', () => {
@@ -57,8 +57,9 @@ describe('ItemRequest', () => {
   it('should set the activeItem', () => {
 
      operations.ItemRequest(store)(activeItem, player)
-     const result = store.getState().playerData.get(player.UserId)!.activeItem
-     expect(result).to.equal(activeItem)
+     const result = store.getState().playerData.get(player.UserId)
+     print(result)
+     expect(result!.activeItem).to.equal(activeItem)
   })
 
   

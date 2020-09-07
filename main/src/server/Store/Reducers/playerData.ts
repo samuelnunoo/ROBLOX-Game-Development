@@ -200,7 +200,11 @@ const playerData = Redux.createReducer<playerReducer, "byId",activeItem| changeC
             .map((data:values) => Object.deepCopy(data))
             .filter((data:values) => data.inventory.get(payload.itemId) === true)
             .map((data:values) => { data.activeItem = payload.itemId; return data})
-            .map((data:values) => Object.copy(state).set(id,data))
+            .map((data:values) => {
+                const result =  Object.copy(state)
+                result.set(id,data)
+                return result }
+               )
             .unwrapOr(state)
 
         return playerData
