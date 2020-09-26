@@ -1,9 +1,12 @@
 import {Store, AnyAction} from "@rbxts/rodux"
-import {playerAction, inventoryAction} from "server/Store/Actions/playerAction"
+import {playerAction, inventoryAction, setActiveItem} from "server/Store/Actions/playerAction"
+import {itemPayload} from "server/Store/Actions/itemAction"
 import { IReducer } from "server/Store/Reducers"
 import Reducer from "server/Store/Reducers/index"
 import store from "server/Store/Store"
 import ClientMiddleware from "server/Store/ClientMiddleware"
+import { ItemProperties } from "server/Store/Reducers/itemData"
+import { updateAction } from "server/Store/Actions/itemAction"
 
 
 interface IInventory {
@@ -30,4 +33,70 @@ export const setInventory = (store:Store<IReducer>) => (player:Player)  => ( ite
 export const mockInventory = (player:Player) => (items: IInventory[]) => {
     const store = createStore(player)
     return setInventory(store)(player)(items)
+}
+
+export const mockActiveItem = (player:Player) => (active:IInventory) => {
+     const store = mockInventory(player)([active])
+     store.dispatch(setActiveItem(player,active.itemId))
+
+     return store 
+}
+
+export const getItemProp = (itemID:string) => (owner:string) => (rarity:"High" | "Low"| "Medium") => (model:Model) => ({
+    id:itemID,
+    model,
+    style: new Map(),
+    rarity,
+    owner,
+    lotSave:undefined,
+    orientation:undefined,
+    offset:undefined
+} as itemPayload)
+ 
+export const ItemEnv = ()  => {
+
+    const {RS, player} = testEnv()
+    const store = createStore(player)
+    const _rarity = ["High","Low","Medium"]
+    const rarity = _rarity[math.random(2)] as "High" | "Low" | "Medium"
+ 
+    const model = new Instance("Model")
+    model.Name = "Test"
+    model.Parent = RS.Models 
+    const itemID = tostring(math.random(1235304))
+    const owner = tostring(player.UserId)
+
+    const prop = getItemProp(itemID)(owner)(rarity)(model)
+    const newStore = setItemProp(store)(prop)
+
+    return {
+        store:newStore, RS, player, model, prop
+    }
+
+}
+
+export const setItemProp = (store:Store<IReducer>) => (itemProps:itemPayload) => {
+    store.dispatch(updateAction(itemProps))
+    return store 
+}
+
+export const mockModels = (RS:ReplicatedStorage) => (models: Model[]) => {
+    models.forEach( model => model.Parent = RS.Models)
+    return RS
+}
+
+export const createModel = (name:string) => {
+    const item = new Instance("Model")
+    item.Name = name 
+
+    return item 
+}
+
+export const testEnv = () => {
+   const UserId =  math.random()
+   const RS = game.GetService("ReplicatedStorage")
+
+   const player = { UserId } as Player
+
+   return  { player, RS }
 }

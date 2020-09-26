@@ -1,4 +1,5 @@
 import Rodux, { AnyAction } from "@rbxts/rodux";
+import { Option } from "@rbxts/rust-option-result";
 
 // -- Type Definitions -- //
 export interface ItemProperties {
@@ -48,12 +49,20 @@ export interface ItemStore {
          id: string;
      }
  }
+
+ export interface updateItemLot extends Base {
+     type: "updateLot";
+     payload: {
+         id: string;
+         lotID: string;
+     }
+ }
 // -- Setup Information -- //
 const map:IItem = new Map()
 
 // -- Reducer -- //
 
-const itemReducer = Rodux.createReducer<ItemStore,"byId",updateItem|removeItem>(map,{
+const itemReducer = Rodux.createReducer<ItemStore,"byId",updateItem|removeItem|updateItemLot>(map,{
     updateItem: (state, action) => {
         const {id, properties } = action.payload
         const copyState = Object.deepCopy(state)
@@ -69,6 +78,19 @@ const itemReducer = Rodux.createReducer<ItemStore,"byId",updateItem|removeItem>(
         return copyState
      
     },
+    updateLot: (state,action) => {
+        const {id,lotID} = action.payload
+
+       return  Option.some(state.get(id) as ItemProperties)
+        .filter(values => values !== undefined)
+        .filter(values => typeOf(lotID) === "string")
+        .map(values => {
+            const clone = Object.deepCopy(values)
+            clone.lotSave = lotID
+            return state.set(id,clone)
+        })
+        .unwrapOr(state)
+    }
 
 })
 

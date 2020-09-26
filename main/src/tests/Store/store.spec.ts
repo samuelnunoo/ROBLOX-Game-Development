@@ -33,7 +33,6 @@ export = () => {
 
         it("lots should be empty", () => {
             const data = store.getState().playerData.get(plr.UserId) as values
-        
             expect(data.lots.entries().size()).to.equal(0)
         })
 

@@ -1,7 +1,7 @@
 /// <reference types="@rbxts/testez/globals" />
 
 import * as operations from "server/Build System/ItemRequest"
-import {mockInventory} from "../Mocks/DefaultStore"
+import {mockInventory, createStore, mockActiveItem, createModel, mockModels, testEnv, getItemProp, ItemEnv} from "../Mocks/DefaultStore"
 
 const player =  { UserId: 1231231232 } as Player
 const items = [{
@@ -15,7 +15,7 @@ const store = mockInventory(player)(items)
 
 export = () => {
 
-  describe('isInInventory', () => {
+describe('isInInventory', () => {
 
     it('should handle invalid itemID', () => {
       const result =  operations.isInInventory(store)(123,player)
@@ -38,35 +38,18 @@ export = () => {
     })
 })
 
-describe('ItemRequest', () => {
-  const activeItem = '1232132'
 
-  it('should not set if item not in inventory', () => {
+describe("ModelRequest", () => {
 
-      operations.ItemRequest(store)('nope',player)
+const {store,RS,player, model, prop}  = ItemEnv()
+ 
 
-      const result = store.getState().playerData.get(player.UserId)!.activeItem
-      expect(result).to.equal(false)
+  it("Method should return Model", () =>{
+    const result = operations.modelRequest(store)(RS)(player,prop.id)
+    expect(result).to.equal(model)
   })
-
-  it('isInInventory should return true', () => {
-    const result = operations.isInInventory(store)(activeItem,player)
-    expect(result).to.equal(true)
-  })
-
-  it('should set the activeItem', () => {
-
-     operations.ItemRequest(store)(activeItem, player)
-     const result = store.getState().playerData.get(player.UserId)
-     print(result)
-     expect(result!.activeItem).to.equal(activeItem)
-  })
-
-  
 
 
 })
 
 }
-
-

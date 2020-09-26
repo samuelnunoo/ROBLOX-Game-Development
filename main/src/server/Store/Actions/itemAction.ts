@@ -1,7 +1,8 @@
-import {ItemProperties, updateItem, removeItem} from "../Reducers/itemData"
+import {ItemProperties, updateItem, removeItem, updateItemLot} from "../Reducers/itemData"
 const HttpService = game.GetService("HttpService")
 
-export interface payload {
+
+export interface itemPayload {
     id: string;
     model: Model;
     style: Map<string,string>;
@@ -11,7 +12,7 @@ export interface payload {
     offset: undefined | Vector3;
     orientation: undefined | Vector3;
 }
-export const updateAction = (data:payload):updateItem => {
+export const updateAction = (data:itemPayload):updateItem => {
 
     const id = data.id
     return {
@@ -23,6 +24,16 @@ export const updateAction = (data:payload):updateItem => {
     }
 
 
+}
+export const updateLot = (id:string) => (lotID:string)  => {
+    return {
+        type: "updateLot",
+        payload: {
+            id,
+            lotID
+
+        }
+    } as updateItemLot
 }
 export const removeAction = (id:string): removeItem => {
     return {

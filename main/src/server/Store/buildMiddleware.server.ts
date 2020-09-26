@@ -20,26 +20,13 @@ const checkOwnership = (state: IReducer) => (player:Player, itemID:string) => {
             const notPlaced = itemData ? itemData.lotSave !== undefined : false
 
             if (notPlaced) {
-
                 return true 
-
-
             }
-
-
-
-
-        
-
         }
-
-
-   
     }
 
     return false
 }
-
 const prepareData = (state:IReducer) => (itemID:string, player: Player, pos: Vector3, rot: Vector3) => {
     const playerData = state.playerData.get(player.UserId) as values
     const isExist = state.itemData.get(itemID) as ItemProperties
@@ -53,7 +40,6 @@ const prepareData = (state:IReducer) => (itemID:string, player: Player, pos: Vec
 
    
 }
-
 const buildRequest = (store: Store<IReducer, AnyAction>) => (player:Player, itemID:string, pos: Vector3, rot: Vector3) => {
     const validTypes = typeOf(itemID) === "string" && typeOf(pos) === "Vector3"
     const state = store.getState()
@@ -88,8 +74,6 @@ const updatePosition = (store: Store<IReducer, AnyAction>) =>
     const action = updateAction(itemData)
     store.dispatch(action)
 }
-
-
 interface payload {
     player: Player;
     lot: BasePart;
