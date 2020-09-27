@@ -7,6 +7,7 @@ interface ReplicatedStorage extends Instance {
 		[model:string] : Model;
 	};
 	buildEvent: RemoteEvent;
+	InventoryData: RemoteEvent;
 	PlaceRequest: RemoteFunction;
 	activeItemRequest: RemoteEvent;
 	getLots: RemoteFunction;
