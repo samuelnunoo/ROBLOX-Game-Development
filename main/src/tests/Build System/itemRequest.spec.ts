@@ -41,7 +41,7 @@ describe('isInInventory', () => {
 
 describe("ModelRequest", () => {
 
-const {store,RS,player, model, prop}  = ItemEnv()
+  const {store,RS,player, model, prop}  = ItemEnv()
  
 
   it("Method should return Model", () =>{

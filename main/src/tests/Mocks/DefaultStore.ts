@@ -1,5 +1,5 @@
 import {Store, AnyAction} from "@rbxts/rodux"
-import {playerAction, inventoryAction, setActiveItem} from "server/Store/Actions/playerAction"
+import {playerAction, inventoryAction, setActiveItem, lotAction, setActiveLot} from "server/Store/Actions/playerAction"
 import {itemPayload} from "server/Store/Actions/itemAction"
 import { IReducer } from "server/Store/Reducers"
 import Reducer from "server/Store/Reducers/index"
@@ -53,6 +53,14 @@ export const getItemProp = (itemID:string) => (owner:string) => (rarity:"High" |
     offset:undefined
 } as itemPayload)
  
+
+export const setLot = (store:Store<IReducer>) => (player:Player) => (LotId:string) => {
+    const action = setActiveLot(player, new Instance("Part"),LotId)
+    store.dispatch(action)
+    
+    return store
+} 
+
 export const ItemEnv = ()  => {
 
     const {RS, player} = testEnv()
@@ -66,14 +74,19 @@ export const ItemEnv = ()  => {
     const itemID = tostring(math.random(1235304))
     const owner = tostring(player.UserId)
 
+    
+
     const prop = getItemProp(itemID)(owner)(rarity)(model)
-    const newStore = setItemProp(store)(prop)
+    const newStore = setInventory(setItemProp(store)(prop))(player)([{itemId:itemID, add:true}])
+    const lotID = '12345'
+    const newnewStore = setLot(newStore)(player)(lotID)
 
     return {
-        store:newStore, RS, player, model, prop
+        store:newnewStore, RS, player, model, prop, lotID
     }
 
 }
+
 
 export const setItemProp = (store:Store<IReducer>) => (itemProps:itemPayload) => {
     store.dispatch(updateAction(itemProps))
