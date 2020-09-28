@@ -11,8 +11,7 @@ interface Props {
 
 export default function ItemButton(props:Props) {
 
-    return 
-    <imagebutton
+    return <imagebutton
     
         Size = {props.size}
         Position = {props.position}
