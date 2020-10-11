@@ -1,20 +1,16 @@
 import Roact from "@rbxts/roact"
 
 
-interface Props {
+export interface ItemUIProp {
     itemID:string;
     camera:Camera;
-    callback: (arg:string) => void;
-    position: UDim2;
-    size: UDim2;
+    callback: (arg:string) => any;
+
 }
 
-export default function ItemButton(props:Props) {
+export default function ItemButton(props:ItemUIProp) {
 
     return <imagebutton
-    
-        Size = {props.size}
-        Position = {props.position}
         Event = {{
             MouseButton1Click: () => props.callback(props.itemID)
         }}
