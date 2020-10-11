@@ -4,7 +4,7 @@ import Roact from "@rbxts/roact"
 export interface ItemUIProp {
     itemID:string;
     camera:Camera;
-    callback: (arg:string) => any;
+    callback: (arg:string) => void;
 
 }
 
@@ -21,8 +21,7 @@ export default function ItemButton(props:ItemUIProp) {
         />
     </imagebutton>
     
-
-        
+      
 }
 
 
