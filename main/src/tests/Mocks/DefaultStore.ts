@@ -8,7 +8,6 @@ import ClientMiddleware from "server/Store/ClientMiddleware"
 import { ItemProperties } from "server/Store/Reducers/itemData"
 import { updateAction } from "server/Store/Actions/itemAction"
 
-
 interface IInventory {
     itemId: string;
     add: boolean;
@@ -86,7 +85,6 @@ export const ItemEnv = ()  => {
     }
 
 }
-
 
 export const setItemProp = (store:Store<IReducer>) => (itemProps:itemPayload) => {
     store.dispatch(updateAction(itemProps))
