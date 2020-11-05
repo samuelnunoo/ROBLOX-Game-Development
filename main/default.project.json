@@ -27,11 +27,11 @@
 			"$path": "out/client/ReplicatedStorage"
 		
 		},
-		"ReplicatedFirst": {
-			"$className": "ReplicatedFirst",
-			"$path": "out/client/ReplicatedFirst"
-	
-		}	
+
+		"StarterGui":{
+			"$className": "StarterGui",
+			"$path": "out/client/StarterGui"
+		}
 	}
 }
 
