@@ -12,7 +12,7 @@ interface Props {
 }
 
 type itemData = (false|ItemProperties)[]
-const InventoryData = game.GetService("ReplicatedStorage").InventoryData
+
 
 export default class InventoryUI  extends Roact.Component<{}> {
 

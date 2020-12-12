@@ -1,16 +1,16 @@
 import Roact from "@rbxts/roact"
+import { Request_ID } from "client/ReplicatedStorage/ServerGateway/Enums";
 import { InventoryStuff } from "server/CSMiddleware/InventoryDataRequest"
 import ItemButton, {ItemUIProp} from "./ItemButton"
 
 interface Props { 
     grid: InventoryStuff[];
 }
-const InventoryData = game.GetService("ReplicatedStorage").InventoryData
 
+
+const serverGateway = game.GetService("ReplicatedStorage").serverGateway;
 export default class ItemGrid extends Roact.Component<{},Props> {
 
-    private _connection = InventoryData.OnClientEvent.Connect((data:InventoryStuff[]) => 
-    this.updateInventory(data))
 
     constructor() {
         super({})
@@ -21,14 +21,14 @@ export default class ItemGrid extends Roact.Component<{},Props> {
         this.fetchData()
     }
 
-    private updateInventory (grid:InventoryStuff[])  {
+    public updateInventory (grid:InventoryStuff[])  {
         this.setState({
             grid
         })
     }
 
     private fetchData() {
-        InventoryData.FireServer()
+        serverGateway.FireServer(Request_ID.Inventory_Data,this);
     }
 
     public render(): Roact.Element {

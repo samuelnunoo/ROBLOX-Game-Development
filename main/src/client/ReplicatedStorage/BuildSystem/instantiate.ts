@@ -2,11 +2,14 @@ import { IReducer } from "server/Store/Reducers"
 import { Store } from "@rbxts/rodux"
 import { ItemRequest } from "server/Build System/ItemRequest"
 import { getModules } from "@rbxts/testez/src/TestBootstrap"
+import { Request_ID } from "../ServerGateway/Enums"
 
 const UIS = game.GetService("UserInputService")
 const itemRemote = game.GetService("ReplicatedStorage").itemRequest
-const activeItemRemote = game.GetService("ReplicatedStorage").activeItemRequest
+const serverGateway = game.GetService("ReplicatedStorage").serverGateway;
 
+
+//TODO: Remodel This
 export const getModel =  (itemID:string) => {
     return itemRemote.InvokeServer(itemID) as Model| undefined 
 }
@@ -62,7 +65,7 @@ export const placeItem = (item:Model) => {
 export const placeRequest = (item:Model) => {
 }
 export const setActiveItem = (itemID: string) => {
-    activeItemRemote.FireServer(itemID)
+    serverGateway.FireServer(Request_ID.Active_Item,itemID)
 }
 
 

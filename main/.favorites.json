@@ -6,5 +6,85 @@
         "workspaceRoot": null,
         "workspacePath": null,
         "id": "6Q0UCuMtB4wLNxy8"
+    },
+    {
+        "type": "Group",
+        "name": "ServerGateway",
+        "parent_id": null,
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "u4kj1IxZPOgLGl2C"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\client\\ReplicatedStorage\\ServerGateway\\ClientEvents.ts",
+        "parent_id": "u4kj1IxZPOgLGl2C",
+        "fsPath": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\client\\ReplicatedStorage\\ServerGateway\\ClientEvents.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "hxdQDmFLwfcOIJsA"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\client\\ReplicatedStorage\\ServerGateway\\Enums.ts",
+        "parent_id": "u4kj1IxZPOgLGl2C",
+        "fsPath": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\client\\ReplicatedStorage\\ServerGateway\\Enums.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "JPqVapRdZyukNSWx"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\client\\ReplicatedStorage\\ServerGateway\\serverRequest.ts",
+        "parent_id": "u4kj1IxZPOgLGl2C",
+        "fsPath": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\client\\ReplicatedStorage\\ServerGateway\\serverRequest.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "t9IXHr85gb13Rfwk"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\server\\ServerGateway\\Commands.ts",
+        "parent_id": "u4kj1IxZPOgLGl2C",
+        "fsPath": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\server\\ServerGateway\\Commands.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "9ikCeEFM6VXcDGbd"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\server\\ServerGateway\\Main.ts",
+        "parent_id": "u4kj1IxZPOgLGl2C",
+        "fsPath": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\server\\ServerGateway\\Main.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "vpT7sbfH6IMBw9AD"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\server\\ServerGateway\\MiddleWare.ts",
+        "parent_id": "u4kj1IxZPOgLGl2C",
+        "fsPath": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\server\\ServerGateway\\MiddleWare.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "NeDjI5GzdAyVEqZ2"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\client\\ReplicatedFirst\\ClientDispatcher.client.ts",
+        "parent_id": "u4kj1IxZPOgLGl2C",
+        "fsPath": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\client\\ReplicatedFirst\\ClientDispatcher.client.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "ayZY6pjeGqPVsIlo"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\server\\ServerGateway\\Gateway.ts",
+        "parent_id": "u4kj1IxZPOgLGl2C",
+        "fsPath": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\server\\ServerGateway\\Gateway.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "pbx9N1GPyZhUQ3In"
     }
 ]

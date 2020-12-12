@@ -4,9 +4,9 @@ import { Request_ID } from "client/ReplicatedStorage/ServerGateway/Enums";
 import {Option} from "@rbxts/rust-option-result"
 
 const dispatchRequest = (request:Request_ID,payload:unknown) => {
-    Option.some( clientEvents[request])
+    Option.some(clientEvents[request])
     .filter((method) => method != null) 
-    .map( (method) => method(payload))
+    .map((method) => method(payload))
 }
 
 serverGateway.OnClientEvent.Connect(dispatchRequest)
