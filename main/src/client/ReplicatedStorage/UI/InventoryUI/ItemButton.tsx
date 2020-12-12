@@ -1,25 +1,29 @@
 import Roact from "@rbxts/roact"
+import { InventoryStuff } from "server/CSMiddleware/InventoryDataRequest"
 
 
-export interface ItemUIProp {
+export interface  ItemUIProp {
     itemID:string;
     camera:Camera;
     callback: (arg:string) => void;
 
 }
 
-export default function ItemButton(props:ItemUIProp) {
+export default function ItemButton(props:InventoryStuff) {
+    const camera = new Instance("Camera");
+    const {model,rarity} = props
 
-    return <imagebutton
-        Event = {{
-            MouseButton1Click: () => props.callback(props.itemID)
-        }}
-    >
+    const bounds = model.GetBoundingBox();
+
+    return 
         <viewportframe
-        Key = {props.itemID}
-        CurrentCamera = {props.camera}
-        />
-    </imagebutton>
+        CurrentCamera = {camera}
+        >
+            {
+                
+            }
+        </viewportframe>
+   
     
       
 }
