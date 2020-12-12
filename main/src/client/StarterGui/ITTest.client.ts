@@ -1,3 +1,8 @@
 export {}
+import {Request_ID} from "client/ReplicatedStorage/ServerGateway/Enums"
 
-game.GetService("ReplicatedStorage").ITRemote.FireServer();
+const serverGateway = game.GetService("ReplicatedStorage")
+    .serverGateway.FireServer(Request_ID.Integration_Test, {})
+
+
+

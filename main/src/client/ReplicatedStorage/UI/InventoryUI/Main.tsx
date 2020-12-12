@@ -16,18 +16,15 @@ const InventoryData = game.GetService("ReplicatedStorage").InventoryData
 
 export default class InventoryUI  extends Roact.Component<{}> {
 
-
     constructor() {
         super({})
     }
 
     public render(): Roact.Element {
-     
-
         return (
             <screengui>
                 <frame>
-                 <ItemGrid/>
+                    <ItemGrid/>
                 </frame>
             </screengui>
         )
