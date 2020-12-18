@@ -2,10 +2,10 @@
 import store from "../../server/Store/Store"
 import {Store, AnyAction} from "@rbxts/rodux";
 import { values} from "../../server/Store/Reducers/playerData"
-import {playerAction} from "../../server/Store/Actions/playerAction"
+import {addPlayerAction} from "../../server/Store/Actions/playerAction"
 
 const newPlayer = <T>(store:Store<T, AnyAction>) => (plr:Player): void => {
-    const action = playerAction(plr)
+    const action = addPlayerAction(plr)
     store.dispatch(action)
 }
 

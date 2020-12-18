@@ -67,6 +67,12 @@ export interface addPlayer extends AnyAction {
     type: "addPlayer";
     player: Player;
 }
+
+export interface removePlayer extends AnyAction {
+    type: "removePlayer";
+    player: Player;
+}
+
 export interface activeLot extends baseSystem {
     type: "activeLot";
     payload: {

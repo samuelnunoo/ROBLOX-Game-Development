@@ -19,7 +19,7 @@ const initLots = (folder: Instance[]) => {
     return map
 }
 
-//-- Reducer --//
+//-- Reducer --// //@note Update 
 const availableLots =  Rodux.createReducer<Lots,LotAction>(initLots(Grids), {
     lots: (state, action) => {
         const newMap:Lots = new Map()

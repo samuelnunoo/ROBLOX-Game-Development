@@ -3,6 +3,8 @@ import roactRedux from "@rbxts/roact-rodux";
 import { ClientStore } from "client/ReplicatedStorage/ClientState/Store";
 import { Lots } from "client/ReplicatedStorage/ClientState/Reducers/availableLots";
 import LotButton from "client/ReplicatedStorage/UI/LotUI/LotButton";
+import serverRequest from "client/ReplicatedStorage/ServerGateway/serverRequest"
+import { Request_ID } from "client/ReplicatedStorage/ServerGateway/Enums";
 
 interface MyComponentState extends Props {
   currentLot: Instance | undefined 
@@ -23,8 +25,6 @@ const defaults = {
 
 class LotUI extends Roact.Component<Props, MyComponentState> {
   private running: boolean = false;
-  private lotRequest: RemoteFunction = game.GetService("ReplicatedStorage").LotRequest
-
 
   constructor() {
     super(defaults);
@@ -103,8 +103,7 @@ class LotUI extends Roact.Component<Props, MyComponentState> {
 
   private requestLot() {
     const currentLot = this.state.currentLot
-    const response: boolean = this.lotRequest.InvokeServer(currentLot)
-    print(response)
+    serverRequest(Request_ID.Lot_Request,{currentLot})
 
   }
 

@@ -27,10 +27,17 @@ export function inventoryAction (player:Player,itemId:string, add: boolean): upd
         }
     }
 }
-export function playerAction (player:Player) {
+export function addPlayerAction (player:Player) {
     return {
         type: "addPlayer",
         player
+    }
+}
+
+export function removePlayerAction (player:Player) {
+    return {
+        type: "removePlayer",
+        player 
     }
 }
 

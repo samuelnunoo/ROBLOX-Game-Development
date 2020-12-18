@@ -86,5 +86,93 @@
         "workspaceRoot": null,
         "workspacePath": null,
         "id": "pbx9N1GPyZhUQ3In"
+    },
+    {
+        "type": "Group",
+        "name": "BuildSystem",
+        "parent_id": null,
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "RsOuE5k4jQ8b2ZxW"
+    },
+    {
+        "type": "Group",
+        "name": "LotSystem",
+        "parent_id": null,
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "q1pyO7DgL9NvMZzm",
+        "iconColor": "rgb(70, 130, 180)"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\server\\Store\\Reducers\\lotData.ts",
+        "parent_id": "q1pyO7DgL9NvMZzm",
+        "fsPath": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\server\\Store\\Reducers\\lotData.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "mbCp9kqFZN2TEDOR"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\server\\Store\\Actions\\index.ts",
+        "parent_id": "q1pyO7DgL9NvMZzm",
+        "fsPath": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\server\\Store\\Actions\\index.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "xYiVU6LK4zMsn0lw"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\server\\Build System\\LotRequest.ts",
+        "parent_id": "q1pyO7DgL9NvMZzm",
+        "fsPath": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\server\\Build System\\LotRequest.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "563JSHPr1Uqo2MtC"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\client\\ReplicatedStorage\\ClientState\\Reducers\\availableLots.ts",
+        "parent_id": "q1pyO7DgL9NvMZzm",
+        "fsPath": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\client\\ReplicatedStorage\\ClientState\\Reducers\\availableLots.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "GwPX2fCFUlEvOzRT"
+    },
+    {
+        "type": "Directory",
+        "name": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\client\\ReplicatedStorage\\UI\\LotUI",
+        "parent_id": "q1pyO7DgL9NvMZzm",
+        "fsPath": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\client\\ReplicatedStorage\\UI\\LotUI",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "7mkY20GhTpqdVCEf"
+    },
+    {
+        "type": "Group",
+        "name": "Server",
+        "parent_id": null,
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "fQP07eDGR5oxCidM"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\server\\Store\\Reducers\\serverData.ts",
+        "parent_id": "fQP07eDGR5oxCidM",
+        "fsPath": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\server\\Store\\Reducers\\serverData.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "FcNjGsuZEBpgTU2m"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\server\\Store\\Actions\\serverAction.ts",
+        "parent_id": "fQP07eDGR5oxCidM",
+        "fsPath": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\server\\Store\\Actions\\serverAction.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "TBtnk83HEIDuerPG"
     }
 ]

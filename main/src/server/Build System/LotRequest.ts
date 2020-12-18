@@ -6,6 +6,7 @@ import { IReducer } from "server/Store/Reducers";
 import {setActiveLot} from "server/Store/Actions/playerAction"
 import { values } from "server/Store/Reducers/playerData";
 import {Option} from "@rbxts/rust-option-result"
+//@todo read through this
 
 interface payload {
     state: IReducer;
@@ -38,7 +39,7 @@ export const setPlayerData = ({state, player, lot }: payload ): payload => {
     return {state,player,lot}
 }
 
-export const setGameState = ({state, player, lot}:payload): boolean => {
+export const assignToLot = ({state, player, lot}:payload): boolean => {
     const action = lotAction(lot as Instance, player)
     store.dispatch(action)
     
@@ -49,8 +50,8 @@ export const setGameState = ({state, player, lot}:payload): boolean => {
 export default function lotRequest(player:Player, lot:unknown): boolean {
     const state =  Option.some({state:store.getState(), player, lot} as payload)
         .filter(isValid)
-        .map(setPlayerData)
-        .map(setGameState)
+        // .map(setPlayerData)
+        .map(assignToLot)
         .unwrapOr(false)
 
     return state 
