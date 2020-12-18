@@ -5,13 +5,13 @@ import { getModules } from "@rbxts/testez/src/TestBootstrap"
 import { Request_ID } from "../ServerGateway/Enums"
 
 const UIS = game.GetService("UserInputService")
-const itemRemote = game.GetService("ReplicatedStorage").itemRequest
+const itemRemote = game.GetService("ReplicatedStorage").serverGateway //@todo update file
 const serverGateway = game.GetService("ReplicatedStorage").serverGateway;
 
 
-//TODO: Remodel This
+//@todo remodel this
 export const getModel =  (itemID:string) => {
-    return itemRemote.InvokeServer(itemID) as Model| undefined 
+  //  return itemRemote.InvokeServer(itemID) as Model| undefined 
 }
 export const createRayParam = (set:Instance[]) => {
 

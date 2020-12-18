@@ -2,29 +2,25 @@
 # yarn lockfile v1
 
 
-"@rbxts/roact-rodux@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@rbxts/roact-rodux/-/roact-rodux-0.1.1.tgz#2854d86d7be3e94ed7bb16c4aacee2acc5508456"
-  integrity sha512-gll20NcMCmE2BKX48HL3Cj6dHn9VKS64bs+WJF6ny4oZ1a7fMRmI2olfIm65L3878WyiKT9yodUEaQp5zNItFw==
-  dependencies:
-    "@rbxts/roact" "^1.1.1"
-    "@rbxts/rodux" "0.0.12"
-    "@rbxts/types" "^1.0.244"
+"@rbxts/compiler-types@^1.0.0-beta.10.0":
+  version "1.0.0-beta.10.0"
+  resolved "https://registry.yarnpkg.com/@rbxts/compiler-types/-/compiler-types-1.0.0-beta.10.0.tgz#3b1496f88cc43bb072bf84dc5485bccecc35a5b8"
+  integrity sha512-nP7n2G3wVs1VcI/kHTe/LUdjVhROTKYLyV+wKHyMQ5AawUy5Ivg1p+p5Nt8UnEekzlqxs+zI9sJDFr+tBxx52A==
 
-"@rbxts/roact@^1.1.1":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@rbxts/roact/-/roact-1.3.0.tgz#11974c7e07c1c9a48b96fa1aa7eb1f93e642784f"
-  integrity sha512-89tuOScFsspxYXROomwcMtn4pdA0Tl8WyOAVpZ6UaQ5dfyk69AFhcU06fWBAsd06JI+9ypdKHIbrtxFXVVfj8w==
+"@rbxts/object-utils@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@rbxts/object-utils/-/object-utils-1.0.4.tgz#c53d80f89e75c401365446be63fa1396bc2cffe7"
+  integrity sha512-dLLhf022ipV+9i910sOE7kl9losKHoon0WgeerHqVMQA5EYsLUsVT2AxhJuhk8MiDn5oJ2GiFofE/LadY9TpJQ==
+
+"@rbxts/roact-rodux@^0.1.1":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@rbxts/roact-rodux/-/roact-rodux-0.1.2.tgz#1e77052696d89222c67de4969e72846c97b2042a"
+  integrity sha512-4dIYfM5u5zCps9VHnKbPNFu6iviMV7Uu7RCHaarRDzdf/bDKT+WashLb+nho4xl1zmUsC2qScxOBrusrYot8Yg==
 
 "@rbxts/roact@^1.3.0-ts.2":
-  version "1.3.0-ts.2"
-  resolved "https://registry.yarnpkg.com/@rbxts/roact/-/roact-1.3.0-ts.2.tgz#4177c7270d9cf22222186fa261e0e1ebb4d45e73"
-  integrity sha512-cjEYwvZP4SJRpvc2Gg/iDZZ9W7jCR2tkIW1VfiUXuALMRiCg7dtcx+OVlVTbsN8dcCDAxxxfBpO4ks0y9nxgOg==
-
-"@rbxts/rodux@0.0.12":
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/@rbxts/rodux/-/rodux-0.0.12.tgz#d9485d06cf97d89aa3e30db2d5b2734b0745df03"
-  integrity sha512-d6JX/zbML4JzzJK7Jrrv+X3/PtOQQX+VBbEtcXm8fndoClz66S/p8SfKUnXlyG2iTThNzzqml743OeB3YmNuyw==
+  version "1.3.0-ts.7"
+  resolved "https://registry.yarnpkg.com/@rbxts/roact/-/roact-1.3.0-ts.7.tgz#c3ad259688f2f9ab6e5a610b4ed6ebc2fbea9ace"
+  integrity sha512-lnN/6DFGfw0hMM3jttTEM1gWM9EGKYEX2pdJkV1lyHoC4jmBlRaREOKEQSp63rmCIk7zemzc7bf9D76blJKNyA==
 
 "@rbxts/rodux@^1.1.0":
   version "1.1.0"
@@ -41,10 +37,10 @@
   resolved "https://registry.yarnpkg.com/@rbxts/testez/-/testez-0.3.1-ts.6.tgz#455c59c9e165164fb4c7d2ceb6a1229541e984f2"
   integrity sha512-WiiRmYF1bvq4rgiXpzAgvgajZ+Iq49b+d0ki+WrqflUMuDTpUfBduqEWg1bS5t1KAZ22OHfH2pjeqwXwlaif8w==
 
-"@rbxts/types@^1.0.244", "@rbxts/types@^1.0.391":
-  version "1.0.393"
-  resolved "https://registry.yarnpkg.com/@rbxts/types/-/types-1.0.393.tgz#3a01ec79fdb86680e54a9eae5559049f46694b24"
-  integrity sha512-o5AUuLKCuCOeWKV7siQNEy1S1OTTVceMXXc2T0GiS9FPCfSmQ9/wcC8xeoQKXB8vKZoKUlI82muueXXh3oPDgA==
+"@rbxts/types@^1.0.429":
+  version "1.0.429"
+  resolved "https://registry.yarnpkg.com/@rbxts/types/-/types-1.0.429.tgz#f57ecb2f466684fd7a59b4c1fbf2ea4a1c11eeac"
+  integrity sha512-EdNt9GgRHpC/BNdv64HY0zxPfHbBa73RRCjzwlhAvldWLrIffeWSAut0i9OgUq9EdH4s5KS/S5sWpbeSPf1m8w==
 
 "@types/color-name@^1.1.1":
   version "1.1.1"
@@ -357,12 +353,7 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
-typescript@^4.0.3:
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.0.3.tgz#153bbd468ef07725c1df9c77e8b453f8d36abba5"
-  integrity sha512-tEu6DGxGgRJPb/mVPIZ48e69xCn2yRmCgYmDugAVwmJ6o+0u1RI18eO7E7WBTLYLaEVVOhwQmcdhQHweux/WPg==
-
-typescript@^4.1.2:
+typescript@^4.0.3, typescript@^4.1.2:
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.1.3.tgz#519d582bd94cba0cf8934c7d8e8467e473f53bb7"
   integrity sha512-B3ZIOf1IKeH2ixgHhj6la6xdwR9QrLC5d1VKeCSY4tvkqhF2eqd9O7txNlS0PO3GrBAFIdr3L1ndNwteUbZLYg==

@@ -1,4 +1,5 @@
 import Rodux, {AnyAction} from "@rbxts/rodux";
+import Object from "@rbxts/object-utils"
 
 //---- Type Information --- //
 
@@ -93,7 +94,8 @@ const lotReducer = Rodux.createReducer<lotStore, "byId",  updateObjects|setType|
         const lotData = state.get(id) 
 
         if (lotData) {
-            const copy = Object.deepCopy(lotData)
+            const copy = 
+            Object.deepCopy(lotData)
             copy.typeId = typeId
 
             const newState = Object.deepCopy(state)

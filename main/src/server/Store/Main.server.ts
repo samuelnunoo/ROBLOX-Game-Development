@@ -17,12 +17,12 @@ const removePlayer = <T>(store:Store<T,AnyAction>) => (plr:Player): void => {
 }
 
 
-const addPlayerWrapper = addPlayerAction(store)
+//const addPlayerWrapper = addPlayerAction(store)
 
-const removePlayerWrapper = // 
+//const removePlayerWrapper = 
 
 
 // -- Events -- //
-players.ChildAdded.Connect( (plr) => addPlayerWrapper(plr as Player))
-players.ChildRemoved.Connect( (plr) => )
+//players.ChildAdded.Connect( (plr) => addPlayerWrapper(plr as Player)) @todo fix this
+//players.ChildRemoved.Connect( (plr) => ) @todo fix this
 

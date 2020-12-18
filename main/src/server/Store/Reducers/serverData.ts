@@ -2,7 +2,7 @@ import Rodux, {AnyAction} from "@rbxts/rodux";
 import { Option } from "@rbxts/rust-option-result";
 
 //---- Type Information --- //
-interface serverPlayerData {
+export interface serverPlayerData {
     lots: {
         Business: {
             active: false | String;
@@ -43,7 +43,7 @@ export interface ISetLot extends BaseAction {
 
 
 // ----- Default Data  ----- //
-const defaultData = ()=> { 
+export const defaultData = ()=> { 
   
     // Resources 
    const lots =  game.Workspace.Lots.GetChildren();
@@ -61,17 +61,17 @@ const defaultData = ()=> {
       framework.lots.set(lot.Name,false)
       
       //Add Lot to Available
-      if ( (lot as Grid).LotType.Value == "Business") {
+      if ( (lot as Grid).LotType.Value === "Business") {
           framework.available.Business.add(lot.Name)
       }
-      else if ((lot as Grid).LotType.Value == "Residiential") {
+      else if ((lot as Grid).LotType.Value === "Residiential") {
           framework.available.Residential.add(lot.Name)
       }
       
    })
 
 
-   return framework
+   return framework as serverStore
 
 } 
  
@@ -83,7 +83,7 @@ export class helperMethods {
 
     static isValidLotID = (state:serverStore) => (lotString:string) => {
         const lot = state.lots.get(lotString)
-        return lot !== undefined && lot == false;
+        return lot !== undefined && lot === false;
     }
     
     static isValidPlayer = (state:serverStore) => (id:string) => {
@@ -98,12 +98,12 @@ export class helperMethods {
     }
 
     static isValidLot = (lot:Grid) => {
-        return lot != undefined && lot.LotType.Value != "Community"
+        return lot !== undefined && lot.LotType.Value !== "Community"
     }
     
     static playerHasLotAvailable = (state:serverStore) => (id:string,lotType:"Business"|"Residential") => {
         const player = state.players.get(id) as serverPlayerData
-        return player.lots[lotType].active == false 
+        return player.lots[lotType].active === false 
     }
     
     static assignLot = (state:serverStore) => (playerID:string,lotType:"Business"|"Residential",lotID:string) => {
@@ -159,28 +159,25 @@ const freeLot = (state:serverStore) => (lot:string,id:string) => {
     Option.some(lot)
 
         //Check Lot and Player Validity 
-        .filter(lot => isValidLotID(state)(lot))
-        .filter(lot => isValidPlayer(state)(id))
+        .filter(lot => helperMethods.isValidLotID(state)(lot))
+        .filter(lot => helperMethods.isValidPlayer(state)(id))
 
         //Get Lot Type
-        .map(lot => getLotGrid(lot))
-        .filter(lot => isValidLot(lot))
+        .map(lot => helperMethods.getLotGrid(lot))
+        .filter(lot => helperMethods.isValidLot(lot))
         .map(lot => lot.LotType.Value as "Business"|"Residential")
 
         //Set Player Lot of Type to False 
         .map( lotType => {
-            setPlayerLotOfTypeToFalse(state)(lotType,id);
+            helperMethods.setPlayerLotOfTypeToFalse(state)(lotType,id);
             return lotType
         })
 
         //Make Available
-        .map( lotType => { makeAvailable(state)(lotType,lot)
+        .map( lotType => { helperMethods.makeAvailable(state)(lotType,lot)
         })
 
-        //
-
-
-        // 
+   
 
 
 

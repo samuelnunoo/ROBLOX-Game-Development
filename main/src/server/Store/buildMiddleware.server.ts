@@ -5,8 +5,8 @@ import { ItemProperties } from "./Reducers/itemData"
 import * as placement from "client/ReplicatedStorage/BuildSystem/placementOperations"
 import {updateAction} from "../Store/Actions/itemAction"
 import { values } from "./Reducers/playerData"
+import Object from "@rbxts/object-utils"
 
-const buildRemote = game.GetService("ReplicatedStorage").buildEvent
 export {}
 
 const checkOwnership = (state: IReducer) => (player:Player, itemID:string) => {

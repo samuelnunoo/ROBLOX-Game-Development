@@ -37,8 +37,9 @@ export default class ItemGrid extends Roact.Component<{},Props> {
         return (<scrollingframe>
             <uigridlayout/>
             {
-                grid.map(data => 
+               /* grid.map(data =>  //@todo update
                     Roact.createElement(ItemButton,data))
+                    */
             }
         </scrollingframe>)
     }

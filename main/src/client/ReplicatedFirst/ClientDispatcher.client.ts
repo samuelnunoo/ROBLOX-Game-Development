@@ -5,7 +5,7 @@ import {Option} from "@rbxts/rust-option-result"
 
 const dispatchRequest = (request:Request_ID,payload:unknown) => { //@note Dispatch LotRequest
     Option.some(clientEvents[request])
-    .filter((method) => method != null) 
+    .filter((method) => method !== undefined) 
     .map((method) => method(payload))
 }
 

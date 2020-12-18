@@ -1,13 +1,14 @@
 {
 	"compilerOptions": {
 		// required
+		"moduleResolution": "Node",
 		"allowSyntheticDefaultImports": true,
 		"isolatedModules": true,
 		"downlevelIteration": true,
-		"module": "commonjs",
+		"module": "commonJS",
 		"noLib": true,
 		"strict": true,
-		"target": "es6",
+		"target": "es2020",
 		"typeRoots": [ "node_modules/@rbxts" ],
 		"paths": {
 			"storage": ["client/ReplicatedStorage/ClientState"],

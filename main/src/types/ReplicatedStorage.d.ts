@@ -7,6 +7,7 @@ interface ReplicatedStorage extends Instance {
 		[model:string] : Model;
 	};
 	serverGateway:RemoteEvent;
+	ITRemote: RemoteEvent;
 	UI: Folder & {
 		LotUIController: ModuleScript;
 	};

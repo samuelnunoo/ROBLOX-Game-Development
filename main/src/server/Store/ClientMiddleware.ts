@@ -1,7 +1,7 @@
 import { Action, AnyAction } from "@rbxts/rodux"
 import { IState } from "./Store"
 
-const clientRemote: RemoteEvent = game.GetService("ReplicatedStorage").clientRelay
+const clientRemote: RemoteEvent = game.GetService("ReplicatedStorage").serverGateway
 
 const DeployAction: (remote:RemoteEvent) => (action: Action) => void
  = (remote) => (action) => {

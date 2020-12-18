@@ -1,4 +1,4 @@
-const buildRemote = game.GetService("ReplicatedStorage").buildEvent
+const buildRemote = game.GetService("ReplicatedStorage").serverGateway //@update whole file
 
 export const boundary = (value:BasePart) => {
 

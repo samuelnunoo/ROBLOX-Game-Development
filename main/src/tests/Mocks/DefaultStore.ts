@@ -1,5 +1,5 @@
 import {Store, AnyAction} from "@rbxts/rodux"
-import {playerAction, inventoryAction, setActiveItem, lotAction, setActiveLot} from "server/Store/Actions/playerAction"
+import { inventoryAction, setActiveItem, lotAction, setActiveLot} from "server/Store/Actions/playerAction"
 import {itemPayload} from "server/Store/Actions/itemAction"
 import { IReducer } from "server/Store/Reducers"
 import Reducer from "server/Store/Reducers/index"
@@ -16,7 +16,7 @@ interface IInventory {
 // -- This creates a default store with a player with instantiated values as defined 
 export const createStore = (player:Player) => {
  const store = new Store<IReducer, AnyAction, {}>(Reducer, {}, [ClientMiddleware])
- store.dispatch(playerAction(player))
+ //store.dispatch(playerAction(player)) @todo refactor this
 
  return store 
 }

@@ -117,7 +117,7 @@ class LotUI extends Roact.Component<Props, MyComponentState> {
 
 function getLots(lots: Lots): Instance[] {
   const newLots = []
-  for (const [key,value] of lots.entries()) {
+  for (const [key,value] of lots) {
     if (value === false) newLots.push(key)
   }
 

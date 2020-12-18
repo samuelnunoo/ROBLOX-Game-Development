@@ -3,6 +3,7 @@ import store from "../../server/Store/Store"
 import {Store, AnyAction} from "@rbxts/rodux";
 import { values} from "../../server/Store/Reducers/playerData"
 import {addPlayerAction} from "../../server/Store/Actions/playerAction"
+import Object from "@rbxts/object-utils"
 
 const newPlayer = <T>(store:Store<T, AnyAction>) => (plr:Player): void => {
     const action = addPlayerAction(plr)
@@ -33,7 +34,7 @@ export = () => {
 
         it("lots should be empty", () => {
             const data = store.getState().playerData.get(plr.UserId) as values
-            expect(data.lots.entries().size()).to.equal(0)
+            expect(Object.entries(data.lots).size()).to.equal(0)
         })
 
         it("currency should be 0", () => {
@@ -43,7 +44,7 @@ export = () => {
 
         it('inventory should be empty', () => {
             const data = store.getState().playerData.get(plr.UserId) as values
-            expect(data.inventory.entries().size()).to.equal(0)
+            expect(Object.entries(data.inventory).size()).to.equal(0)
         })
 
 

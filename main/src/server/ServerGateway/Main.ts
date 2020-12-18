@@ -9,7 +9,7 @@ import { initMiddleware } from "./MiddleWare";
 export const processRequest = (player:Player,request_ID:unknown,payload:unknown) => {
     Option.some( commands[request_ID as Request_ID])
         // Valid Request_ID Check
-        .filter( (method) => method != null)
+        .filter( (method) => method !== undefined)
         // Middleware 
         .map( (method) => {
             initMiddleware(player,request_ID,payload)

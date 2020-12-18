@@ -11,7 +11,7 @@ export interface LotAction extends AnyAction {
 }
 
 // -- Initial Setup -- //
-const Grids: Instance[] = game.Workspace.Grids.GetChildren()
+const Grids: Instance[] = game.Workspace.Lots.GetChildren()
 const initLots = (folder: Instance[]) => {
     const map: Map<Instance, false> = new Map()
     folder.forEach( item => map.set(item,false))

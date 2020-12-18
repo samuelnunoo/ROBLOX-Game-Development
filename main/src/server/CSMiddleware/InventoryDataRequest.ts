@@ -8,6 +8,7 @@ import { IReducer } from "server/Store/Reducers"
 import { ItemProperties } from "server/Store/Reducers/itemData"
 import { values } from "server/Store/Reducers/playerData"
 import store from "server/Store/Store"
+import Object from "@rbxts/object-utils"
 
 export interface InventoryStuff {
     id: String;
@@ -32,7 +33,7 @@ export const sendData = (plr:Player) => (data:InventoryStuff[]) => {
 export const getInventoryData = (store:Store<IReducer>) => (plr:Player) => {
     const result = Option.some(store.getState().playerData.get(plr.UserId) as values)
         .filter(data => data !== undefined)
-        .map(data => data.inventory.entries().map(entry => {
+        .map(data => Object.entries(data.inventory).map( entry => {
             return entry[1] ? getItemData(store)(entry[0])  : false
         }))
         .map(data => data.filter( x => x !== false ) as ItemProperties[])
