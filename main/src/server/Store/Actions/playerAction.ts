@@ -1,5 +1,5 @@
 import {changeCurrency, updateLot, updateInventory, activeLot, activeItem} from "../Reducers/playerData"
-
+import {IaddPlayerAction} from "server/Store/Reducers/serverData"
 export function currencyAction (player: Player, change: number): changeCurrency {
     return {
         type: "updateCurrency",
@@ -30,8 +30,10 @@ export function inventoryAction (player:Player,itemId:string, add: boolean): upd
 export function addPlayerAction (player:Player) {
     return {
         type: "addPlayer",
-        player
-    }
+        payload:{
+            id: player.UserId
+        }
+    } as IaddPlayerAction
 }
 
 export function removePlayerAction (player:Player) {
