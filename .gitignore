@@ -1,4 +1,4 @@
 .vagrant
 main/node_modules
 main/out
-ssh_config
+.idea/
