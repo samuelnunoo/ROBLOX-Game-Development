@@ -3,7 +3,8 @@ export enum Request_ID {
     Item_Request = "Item_Request",
     Active_Item = "Active_Item",
     Inventory_Data = "Inventory_Data",
-    Lot_Request = "Lot_Request" //@note enum
+    Lot_Request = "Lot_Request",
+    Update_Store = "Update_Store"
 
 
 

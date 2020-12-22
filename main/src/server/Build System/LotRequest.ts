@@ -1,7 +1,5 @@
 import store from "../Store/Store"
-import {lotAction} from "../Store/Actions/index";
 import { AnyAction } from "@rbxts/rodux";
-import { LotAction, Lots } from "client/ReplicatedStorage/ClientState/Reducers/availableLots";
 import { IReducer } from "server/Store/Reducers";
 import {setActiveLot} from "server/Store/Actions/playerAction"
 import { values } from "server/Store/Reducers/playerData";
@@ -22,11 +20,9 @@ export const isValid = ({state, player, lot}:payload): boolean => {
         .filter((data: values) => data.activeLot.lot === undefined)
         .and(Option.some(true))
         .unwrapOr(false)
-      
-    const validLot: boolean = Option.some(state.availableLots.get(lot as Instance) as boolean)
-        .contains(false)
+
      
-    return typeOf(lot) === "Instance" && validLot && playerData
+    return typeOf(lot) === "Instance" && playerData //@todo refactor
     
    
 }
@@ -39,6 +35,8 @@ export const setPlayerData = ({state, player, lot }: payload ): payload => {
     return {state,player,lot}
 }
 
+
+/*
 export const assignToLot = ({state, player, lot}:payload): boolean => {
     const action = lotAction(lot as Instance, player)
     store.dispatch(action)
@@ -59,3 +57,4 @@ export default function lotRequest(player:Player, lot:unknown): boolean {
 }
 
 
+*/

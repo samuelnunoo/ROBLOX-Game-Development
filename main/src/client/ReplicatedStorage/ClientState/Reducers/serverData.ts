@@ -16,7 +16,7 @@ export interface serverPlayerData {
 
 }
 export type Grid =  Workspace["Lots"]["Grid"]
-export interface serverStore { //@note serverStore Type
+export interface serverStore { 
     players:  Map<number,serverPlayerData>
     lots: Map<string, false | number>
     available: {
@@ -40,7 +40,6 @@ export interface ISetLot extends BaseAction {
         isAdd: boolean;
     }
 }
-
 export interface IaddPlayerAction extends BaseAction {
     type: "addPlayer"
     payload: {
@@ -94,7 +93,6 @@ export const defaultPlayerData = () => ({
 } as serverPlayerData)
 
 // -- Methods -- //
-//@todo write tests
 export class helperMethods {
 
     static isValidLotID = (state:serverStore) => (lotString:string) => {
@@ -200,6 +198,9 @@ export const freeLot = (state:serverStore) => (lot:string,id:number) => {
         })
 
         //Make Available
+        .map( lotType => {
+            state.lots.set(lot,false)
+            return lotType})
         .map( lotType => { helperMethods.makeAvailable(state)(lotType,lot)
             return true
         })
@@ -212,8 +213,7 @@ export const freeLot = (state:serverStore) => (lot:string,id:number) => {
 
 }
 
-
-const serverReducer = Rodux.createReducer<serverStore,ISetLot|IaddPlayerAction>(defaultData(), {
+const lotReducer = Rodux.createReducer<serverStore,ISetLot|IaddPlayerAction>(defaultData(), {
     setLot: (state, action) => {
         const {id,isAdd,lot} = action.payload
         const newState = Object.deepCopy(state)
@@ -238,4 +238,4 @@ const serverReducer = Rodux.createReducer<serverStore,ISetLot|IaddPlayerAction>(
 })
 
 
-export default serverReducer
+export default lotReducer

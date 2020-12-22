@@ -1,9 +1,14 @@
 import {combineReducers} from "@rbxts/rodux";
-import availableLots from "./availableLots"
+import serverData from "./serverData"
+import {serverStore} from "./serverData"
 
 
-export default combineReducers({
-    availableLots
+export interface IReducer {
+    serverData: serverStore
+}
+
+export default combineReducers<IReducer>({
+    serverData
 })
 
 

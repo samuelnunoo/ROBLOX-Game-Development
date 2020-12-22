@@ -1,16 +1,10 @@
 import {Store} from "@rbxts/rodux";
 import Interceptor from "./Interceptor"
 import Reducer from "./Reducers/index"
-import { Lots } from "./Reducers/availableLots";
 import Rodux from "@rbxts/rodux"
+import {IReducer} from "./Reducers/index"
 
-
-export interface ClientStore {
-   availableLots: Lots
-}
-
-const store = new Store<ClientStore, Rodux.AnyAction>(Reducer)
-Interceptor(store)
+const store = new Store<IReducer, Rodux.AnyAction>(Reducer)
 
 export default store 
 

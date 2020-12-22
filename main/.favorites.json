@@ -71,15 +71,6 @@
     },
     {
         "type": "File",
-        "name": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\client\\ReplicatedFirst\\ClientDispatcher.client.ts",
-        "parent_id": "u4kj1IxZPOgLGl2C",
-        "fsPath": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\client\\ReplicatedFirst\\ClientDispatcher.client.ts",
-        "workspaceRoot": null,
-        "workspacePath": null,
-        "id": "ayZY6pjeGqPVsIlo"
-    },
-    {
-        "type": "File",
         "name": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\server\\ServerGateway\\Gateway.ts",
         "parent_id": "u4kj1IxZPOgLGl2C",
         "fsPath": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\server\\ServerGateway\\Gateway.ts",
@@ -174,5 +165,75 @@
         "workspaceRoot": null,
         "workspacePath": null,
         "id": "TBtnk83HEIDuerPG"
+    },
+    {
+        "type": "Group",
+        "name": "LotRequest",
+        "parent_id": null,
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "4wjhoDqtbHIidKgV"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\tests\\Lot System\\LotRequest.spec.ts",
+        "parent_id": "4wjhoDqtbHIidKgV",
+        "fsPath": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\tests\\Lot System\\LotRequest.spec.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "LTxP9Sb0qMsAw86t"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\server\\Lot System\\availableLots.ts",
+        "parent_id": "4wjhoDqtbHIidKgV",
+        "fsPath": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\server\\Lot System\\availableLots.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "BE6y5FQDrAwmkZzR"
+    },
+    {
+        "type": "Group",
+        "name": "DataStore",
+        "parent_id": null,
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "txJ3HNkP7Yyw0m5i"
+    },
+    {
+        "type": "Directory",
+        "name": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\server\\Store",
+        "parent_id": "txJ3HNkP7Yyw0m5i",
+        "fsPath": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\server\\Store",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "SUW2InAbg8ZcX9qN"
+    },
+    {
+        "type": "Directory",
+        "name": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\client\\ReplicatedStorage\\ClientState",
+        "parent_id": "txJ3HNkP7Yyw0m5i",
+        "fsPath": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\client\\ReplicatedStorage\\ClientState",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "dhKJIygtVc4FTwm0"
+    },
+    {
+        "type": "File",
+        "name": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\client\\StarterPlayerScripts\\ClientDispatcher.client.ts",
+        "parent_id": "u4kj1IxZPOgLGl2C",
+        "fsPath": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\client\\StarterPlayerScripts\\ClientDispatcher.client.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "uBq0lT9Hesc2Jaov"
+    },
+    {
+        "type": "Directory",
+        "name": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\client\\ReplicatedStorage\\Lot System",
+        "parent_id": "q1pyO7DgL9NvMZzm",
+        "fsPath": "c:\\Users\\Samuel\\OneDrive\\Documents\\GitHub\\ROBLOX-Game-Development\\main\\src\\client\\ReplicatedStorage\\Lot System",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "OFxaoAfsmlkR6w0W"
     }
 ]

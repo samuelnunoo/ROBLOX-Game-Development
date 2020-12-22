@@ -1,7 +1,7 @@
-import {ISetLot} from "server/Store/Reducers/serverData"
+import {ISetLot} from "../Reducers/serverData"
 
 // Sets the lot on the server 
-export function setLotAction (id:string,lot:string,isAdd:boolean) {
+export function setLotAction (id:number,lot:string,isAdd:boolean) {
     return {
         type: "setLot",
         payload: {

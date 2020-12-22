@@ -1,6 +1,5 @@
 import Roact from "@rbxts/roact"
 import roactRedux from "@rbxts/roact-rodux"
-import { ClientStore } from "client/ReplicatedStorage/ClientState/Store"
 import { ItemProperties } from "server/Store/Reducers/itemData"
 import ItemButton, {ItemUIProp} from "./ItemButton"
 import ItemGrid from "./ItemGrid"

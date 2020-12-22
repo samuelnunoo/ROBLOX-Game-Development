@@ -1,5 +1,6 @@
 import {Request_ID} from "client/ReplicatedStorage/ServerGateway/Enums"
 import { modelRequest, modelRequestWrapper } from "server/Build System/ItemRequest"
+import lotRequest from "server/Lot System/lotRequest"
 import { getInventoryDataWrapper } from "server/CSMiddleware/InventoryDataRequest"
 import { setActiveItem } from "server/Store/Actions/playerAction"
 
@@ -16,7 +17,7 @@ export default {
     [Request_ID.Active_Item]: setActiveItem,
     [Request_ID.Item_Request]: modelRequestWrapper,
     [Request_ID.Inventory_Data]: getInventoryDataWrapper,
-   // [Request_ID.Lot_Request]:  //@todo add relavent method
+    [Request_ID.Lot_Request]: lotRequest
 
     
 } as commands 

@@ -28,10 +28,15 @@
 		
 		},
 
-		"ReplicatedFirst": {
-			"$className": "ReplicatedFirst",
-			"$path": "out/client/ReplicatedFirst"
-		},
+		"StarterPlayer": {
+            "$className": "StarterPlayer",
+
+            "StarterPlayerScripts": {
+                "$className": "StarterPlayerScripts",
+                "$path": "out/client/StarterPlayerScripts"
+            }
+        },
+
 		"StarterGui":{
 			"$className": "StarterGui",
 			"$path": "out/client/StarterGui"

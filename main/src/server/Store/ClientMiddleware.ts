@@ -1,11 +1,17 @@
 import { Action, AnyAction } from "@rbxts/rodux"
-import { IState } from "./Store"
+import { Request_ID } from "client/ReplicatedStorage/ServerGateway/Enums"
+
+
+const allowSet = new Set<String>()
+    .add("setLot")
+
 
 const clientRemote: RemoteEvent = game.GetService("ReplicatedStorage").serverGateway
 
 const DeployAction: (remote:RemoteEvent) => (action: Action) => void
  = (remote) => (action) => {
-    remote.FireAllClients(action)
+    if (!allowSet.has(action.type)) return;
+    remote.FireAllClients(Request_ID.Update_Store,action)
 }
 
 const clientMiddleware = (nextDispatch:Fn) => {

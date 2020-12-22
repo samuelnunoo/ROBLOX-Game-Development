@@ -66,7 +66,10 @@ export interface updateInventory extends baseSystem {
 }
 export interface addPlayer extends AnyAction {
     type: "addPlayer";
-    player: Player;
+    payload: {
+        id:number;
+    }
+   
 }
 
 export interface removePlayer extends AnyAction {
@@ -166,8 +169,8 @@ const playerData = Redux.createReducer<playerReducer, "byId",activeItem| changeC
         return state 
     },
     addPlayer: (state,action) => {
-        const { player } = action
-        const id = player.UserId
+        const { payload } = action;
+        const id = payload.id
 
         const doesExist = state.get(id)
 

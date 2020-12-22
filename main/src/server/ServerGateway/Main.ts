@@ -5,17 +5,23 @@ import commands from "server/ServerGateway/Commands"
 import { initMiddleware } from "./MiddleWare";
 
 
-//@todo write test
+
+export const filterRequest = (method:unknown) => method !== undefined 
 export const processRequest = (player:Player,request_ID:unknown,payload:unknown) => {
-    Option.some( commands[request_ID as Request_ID])
+    return Option.some( commands[request_ID as Request_ID])
         // Valid Request_ID Check
-        .filter( (method) => method !== undefined)
+        .filter( (method) => filterRequest(method))
         // Middleware 
         .map( (method) => {
             initMiddleware(player,request_ID,payload)
             return method})
         // Method Execution
-        .map((method) => method(player,payload))
+        .map((method) => {
+            method(player,payload)
+            return true 
+        })
+        .unwrapOr(false)
+
 }
 
 

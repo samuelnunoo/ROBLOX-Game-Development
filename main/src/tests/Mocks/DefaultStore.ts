@@ -1,4 +1,4 @@
-import {Store, AnyAction} from "@rbxts/rodux"
+import {Store, AnyAction, Action} from "@rbxts/rodux"
 import { inventoryAction, setActiveItem, lotAction, setActiveLot, addPlayerAction} from "server/Store/Actions/playerAction"
 import {itemPayload} from "server/Store/Actions/itemAction"
 import { IReducer } from "server/Store/Reducers"
@@ -7,6 +7,9 @@ import store from "server/Store/Store"
 import ClientMiddleware from "server/Store/ClientMiddleware"
 import { ItemProperties } from "server/Store/Reducers/itemData"
 import { updateAction } from "server/Store/Actions/itemAction"
+import dispatchRequest from "client/ReplicatedStorage/ServerGateway/dispatchRequest"
+import { Request_ID } from "client/ReplicatedStorage/ServerGateway/Enums"
+import Interceptor, { initInterceptor } from "client/ReplicatedStorage/ClientState/Interceptor"
 
 interface IInventory {
     itemId: string;
@@ -103,8 +106,15 @@ export const createModel = (name:string) => {
     return item 
 }
 
+export const mockMiddleware = <S>(clientStore:Store<S>) => (nextDispatch:Fn) => {
+    return function (action:AnyAction) {
+        // should send it to clientDispatcher
+        initInterceptor(store)(action)
+
+    }
+}
 export const testEnv = () => {
-   const UserId =  math.random()
+   const UserId = 1234567890
    const RS = game.GetService("ReplicatedStorage")
 
    const player = { UserId } as Player

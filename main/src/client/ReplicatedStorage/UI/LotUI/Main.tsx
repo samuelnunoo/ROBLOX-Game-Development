@@ -1,15 +1,15 @@
 import Roact from "@rbxts/roact";
 import roactRedux from "@rbxts/roact-rodux";
-import { ClientStore } from "client/ReplicatedStorage/ClientState/Store";
-import { Lots } from "client/ReplicatedStorage/ClientState/Reducers/availableLots";
 import LotButton from "client/ReplicatedStorage/UI/LotUI/LotButton";
 import serverRequest from "client/ReplicatedStorage/ServerGateway/serverRequest"
 import { Request_ID } from "client/ReplicatedStorage/ServerGateway/Enums";
 
-interface MyComponentState extends Props {
-  currentLot: Instance | undefined 
-  index: number;
-}
+
+//interface MyComponentState extends Props {
+  //currentLot: Instance | undefined 
+  //index: number;
+//}
+/** 
 interface Props {
   test: number;
   example: (...args: any[]) => Instance;
@@ -130,3 +130,5 @@ export default roactRedux.connect((state: ClientStore) => {
     lots: getLots(state.availableLots)
   } as Props;
 })(LotUI);
+
+*/
