@@ -4,7 +4,7 @@ import { Store } from "@rbxts/rodux"
 import { Option } from "@rbxts/rust-option-result"
 import { Request_ID } from "client/ReplicatedStorage/ServerGateway/Enums";
 import { isInInventory } from "server/Build System/ItemRequest"
-import { IReducer } from "server/Store/Reducers"
+import { IServerReducer } from "server/Store/Reducers"
 import { ItemProperties } from "server/Store/Reducers/itemData"
 import { values } from "server/Store/Reducers/playerData"
 import store from "server/Store/Store"
@@ -16,7 +16,7 @@ export interface InventoryStuff {
     rarity: "High"|"Medium"|"Low"
 }
 
-export const getItemData = (store:Store<IReducer>) => (itemID:string) => {
+export const getItemData = (store:Store<IServerReducer>) => (itemID:string) => {
     const result = Option.some(store.getState().itemData.get(itemID) as ItemProperties)
     return result.isSome() ? result.unwrap() : false
 }
@@ -30,7 +30,7 @@ export const sendData = (plr:Player) => (data:InventoryStuff[]) => {
     serverGateway.FireClient(plr,Request_ID.Inventory_Data,data)
 }
 
-export const getInventoryData = (store:Store<IReducer>) => (plr:Player) => {
+export const getInventoryData = (store:Store<IServerReducer>) => (plr:Player) => {
     const result = Option.some(store.getState().playerData.get(plr.UserId) as values)
         .filter(data => data !== undefined)
         .map(data => Object.entries(data.inventory).map( entry => {

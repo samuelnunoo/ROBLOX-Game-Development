@@ -1,8 +1,10 @@
 import {Store, AnyAction, Action} from "@rbxts/rodux"
 import { inventoryAction, setActiveItem, lotAction, setActiveLot, addPlayerAction} from "server/Store/Actions/playerAction"
 import {itemPayload} from "server/Store/Actions/itemAction"
-import { IReducer } from "server/Store/Reducers"
-import Reducer from "server/Store/Reducers/index"
+import { IServerReducer } from "server/Store/Reducers"
+import {IClientReducer} from "client/ReplicatedStorage/ClientState/Reducers/index"
+import serverReducer from "server/Store/Reducers/index"
+import clientReducer from "client/ReplicatedStorage/ClientState/Reducers/index"
 import store from "server/Store/Store"
 import ClientMiddleware from "server/Store/ClientMiddleware"
 import { ItemProperties } from "server/Store/Reducers/itemData"
@@ -17,14 +19,19 @@ interface IInventory {
 }
 
 // -- This creates a default store with a player with instantiated values as defined 
-export const createStore = (player:Player) => {
- const store = new Store<IReducer, AnyAction, {}>(Reducer, {}, [ClientMiddleware])
+export const createServerStore = (player:Player) => {
+ const store = new Store<IServerReducer, AnyAction, {}>(serverReducer, {}, [ClientMiddleware])
  store.dispatch(addPlayerAction(player)) 
 
  return store 
 }
 
-export const setInventory = (store:Store<IReducer>) => (player:Player)  => ( items:IInventory[]) => {
+export const createClientStore = () => {
+    const store = new Store<IClientReducer, AnyAction, {}>(clientReducer, {})
+    return store 
+}
+
+export const setInventory = (store:Store<IServerReducer>) => (player:Player)  => ( items:IInventory[]) => {
     items.forEach( item => {
         store.dispatch(inventoryAction(player, item.itemId,item.add))
     })
@@ -33,7 +40,7 @@ export const setInventory = (store:Store<IReducer>) => (player:Player)  => ( ite
 }
 
 export const mockInventory = (player:Player) => (items: IInventory[]) => {
-    const store = createStore(player)
+    const store = createServerStore(player)
     return setInventory(store)(player)(items)
 }
 
@@ -55,8 +62,7 @@ export const getItemProp = (itemID:string) => (owner:string) => (rarity:"High" |
     offset:undefined
 } as itemPayload)
  
-
-export const setLot = (store:Store<IReducer>) => (player:Player) => (LotId:string) => {
+export const setLot = (store:Store<IServerReducer>) => (player:Player) => (LotId:string) => {
     const action = setActiveLot(player, new Instance("Part"),LotId)
     store.dispatch(action)
     
@@ -66,7 +72,7 @@ export const setLot = (store:Store<IReducer>) => (player:Player) => (LotId:strin
 export const ItemEnv = ()  => {
 
     const {RS, player} = testEnv()
-    const store = createStore(player)
+    const store = createServerStore(player)
     const _rarity = ["High","Low","Medium"]
     const rarity = _rarity[math.random(2)] as "High" | "Low" | "Medium"
  
@@ -89,7 +95,7 @@ export const ItemEnv = ()  => {
 
 }
 
-export const setItemProp = (store:Store<IReducer>) => (itemProps:itemPayload) => {
+export const setItemProp = (store:Store<IServerReducer>) => (itemProps:itemPayload) => {
     store.dispatch(updateAction(itemProps))
     return store 
 }
@@ -109,10 +115,11 @@ export const createModel = (name:string) => {
 export const mockMiddleware = <S>(clientStore:Store<S>) => (nextDispatch:Fn) => {
     return function (action:AnyAction) {
         // should send it to clientDispatcher
-        initInterceptor(store)(action)
-
+        initInterceptor(clientStore)(action)
+        nextDispatch(action)
     }
 }
+
 export const testEnv = () => {
    const UserId = 1234567890
    const RS = game.GetService("ReplicatedStorage")

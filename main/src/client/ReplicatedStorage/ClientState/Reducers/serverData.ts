@@ -70,7 +70,7 @@ export const defaultData = ()=> {
       if ( (lot as Grid).LotType.Value === "Business") {
           framework.available.Business.add(lot.Name)
       }
-      else if ((lot as Grid).LotType.Value === "Residiential") {
+      else if ((lot as Grid).LotType.Value === "Residential") {
           framework.available.Residential.add(lot.Name)
       }
       
@@ -80,7 +80,6 @@ export const defaultData = ()=> {
    return framework as serverStore
 
 } 
- 
 export const defaultPlayerData = () => ({
     lots: {
         Business: {
@@ -154,9 +153,6 @@ export class helperMethods {
     
 
 }
-
-
-
 export const claimLot = (state:serverStore) => (lot:string,id:number) => {
     const result = Option.some(lot)
     .filter(lot =>  helperMethods.isValidLotID(state)(lot))
@@ -212,7 +208,6 @@ export const freeLot = (state:serverStore) => (lot:string,id:number) => {
 
 
 }
-
 const lotReducer = Rodux.createReducer<serverStore,ISetLot|IaddPlayerAction>(defaultData(), {
     setLot: (state, action) => {
         const {id,isAdd,lot} = action.payload
@@ -236,6 +231,5 @@ const lotReducer = Rodux.createReducer<serverStore,ISetLot|IaddPlayerAction>(def
         
     
 })
-
 
 export default lotReducer

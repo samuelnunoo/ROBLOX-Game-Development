@@ -1,13 +1,13 @@
 import store from "../Store/Store"
 import { AnyAction } from "@rbxts/rodux";
-import { IReducer } from "server/Store/Reducers";
+import { IServerReducer } from "server/Store/Reducers";
 import {setActiveLot} from "server/Store/Actions/playerAction"
 import { values } from "server/Store/Reducers/playerData";
 import {Option} from "@rbxts/rust-option-result"
 //@todo read through this
 
 interface payload {
-    state: IReducer;
+    state: IServerReducer;
     player: Player;
     lot: unknown
 }

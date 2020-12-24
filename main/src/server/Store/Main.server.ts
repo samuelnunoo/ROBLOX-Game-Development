@@ -1,7 +1,7 @@
 import store from "../Store/Store";
 import {Store, AnyAction} from "@rbxts/rodux"
 import {addPlayerAction, removePlayerAction} from "../Store/Actions/playerAction"
-import { IReducer } from "./Reducers";
+import { IServerReducer } from "./Reducers";
 const players = game.GetService("Players")
 
 // --- Join Logic -- //
@@ -17,12 +17,11 @@ const removePlayer = <T>(store:Store<T,AnyAction>) => (plr:Player): void => {
 }
 
 
-//const addPlayerWrapper = addPlayerAction(store)
-
-//const removePlayerWrapper = 
+const addPlayerWrapper = addPlayer(store)
+const removePlayerWrapper = removePlayer(store)
 
 
 // -- Events -- //
-//players.ChildAdded.Connect( (plr) => addPlayerWrapper(plr as Player)) @todo fix this
-//players.ChildRemoved.Connect( (plr) => ) @todo fix this
+players.ChildAdded.Connect( (plr) => addPlayerWrapper(plr as Player))
+players.ChildRemoved.Connect( (plr) => removePlayerWrapper(plr as Player) ) 
 

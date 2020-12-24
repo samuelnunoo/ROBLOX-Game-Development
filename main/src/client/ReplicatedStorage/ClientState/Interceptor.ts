@@ -1,11 +1,11 @@
 import { AnyAction } from "@rbxts/rodux"
 import { Option } from "@rbxts/rust-option-result"
-import { IReducer } from "./Reducers"
+import { IClientReducer } from "./Reducers"
 import store from "./Store"
 
 const clientRemote: RemoteEvent = game.GetService("ReplicatedStorage").serverGateway
 
-export const initInterceptor = (store:Rodux.Store<IReducer, AnyAction>) =>
+export const initInterceptor = <S>(store:Rodux.Store<S, AnyAction>) =>
 (payload:AnyAction)  => {
     store.dispatch(payload)
 }

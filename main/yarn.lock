@@ -32,6 +32,11 @@
   resolved "https://registry.yarnpkg.com/@rbxts/rust-option-result/-/rust-option-result-0.2.1.tgz#9f5470d3f8fa8c03baf50db68968ac58181d7bbe"
   integrity sha512-FuBP4y3AjqgirN9/wsMXNyx+ITDgttX6rKUg6aSn2acDLa12dmoB+F5FJWhisQSqlBXpRAAoxrktmZJYt8o1wA==
 
+"@rbxts/services@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@rbxts/services/-/services-1.1.2.tgz#56e165547e66ee28ecb557c50253384605e35153"
+  integrity sha512-vxlo00Q/F1Yq3yGa5jisI1lkWuByJzLs2rfidA4e0wkLCBR0Od+BG55TBMzptCVUZjHUSefif4Mtl3d3a6IxyA==
+
 "@rbxts/testez@^0.3.1-ts.6":
   version "0.3.1-ts.6"
   resolved "https://registry.yarnpkg.com/@rbxts/testez/-/testez-0.3.1-ts.6.tgz#455c59c9e165164fb4c7d2ceb6a1229541e984f2"

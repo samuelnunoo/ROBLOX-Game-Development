@@ -5,7 +5,7 @@ import itemData, { IItem } from "./itemData"
 import { serverStore } from "client/ReplicatedStorage/ClientState/Reducers/serverData";
 import serverData from "client/ReplicatedStorage/ClientState/Reducers/serverData"
 
-export interface IReducer {
+export interface IServerReducer {
 
     playerData: playerId;
     lotData: ILotStore;
@@ -13,7 +13,7 @@ export interface IReducer {
     serverData: serverStore
 }
 
-export default combineReducers<IReducer>({
+export default combineReducers<IServerReducer>({
     playerData,
     lotData,
     itemData,

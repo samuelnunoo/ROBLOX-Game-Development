@@ -1,4 +1,4 @@
-import { setLotAction } from "server/Store/Actions/serverAction"
+import { setLotAction } from "client/ReplicatedStorage/ClientState/Actions/serverAction"
 import store from "server/Store/store"
 import {Option} from "@rbxts/rust-option-result"
 

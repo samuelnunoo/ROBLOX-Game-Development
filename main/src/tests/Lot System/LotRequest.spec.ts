@@ -5,7 +5,7 @@ import serverRequest from "client/ReplicatedStorage/ServerGateway/serverRequest"
 import { addPlayerAction } from "server/Store/Actions/playerAction"
 import { setLotAction } from "client/ReplicatedStorage/ClientState/Actions/serverAction"
 import playerData from "server/Store/Reducers/playerData"
-import { testEnv, createStore } from "tests/Mocks/DefaultStore"
+import { testEnv, createServerStore } from "tests/Mocks/DefaultStore"
 import {serverStore,helperMethods,defaultData, defaultPlayerData,claimLot,freeLot} from "client/ReplicatedStorage/ClientState/Reducers/serverData"
 
 
@@ -313,7 +313,7 @@ export = () => {
     })
 
     describe("setLot Add", () => {
-        const store = createStore(player)
+        const store = createServerStore(player)
         const action = setLotAction(id,"Grid1",true)
         store.dispatch(action)
         const serverData = store.getState().serverData
@@ -336,7 +336,7 @@ export = () => {
     })
 
     describe("SetLot Remove",() => {
-        const store = createStore(player)
+        const store = createServerStore(player)
         const action = setLotAction(id,"Grid1",true)
         store.dispatch(action)
         const action2 = setLotAction(id,"Grid1",false)

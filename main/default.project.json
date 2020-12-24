@@ -39,7 +39,8 @@
 
 		"StarterGui":{
 			"$className": "StarterGui",
-			"$path": "out/client/StarterGui"
+			"$path": "out/client/StarterGui",
+			"$ignoreUnknownInstances":true
 		}
 	}
 }

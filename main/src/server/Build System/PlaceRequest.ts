@@ -1,7 +1,7 @@
 
 
 import store from "../Store/Store"
-import { IReducer } from "server/Store/Reducers"
+import { IServerReducer } from "server/Store/Reducers"
 import { Store } from "@rbxts/rodux"
 import { Option } from "@rbxts/rust-option-result"
 import { values } from "server/Store/Reducers/playerData"
@@ -38,7 +38,7 @@ const getDimensions = (item:Model) => {
 
 
 
-export const PlaceRequest = (store:Store<IReducer>) => (player:Player, item:unknown) => {
+export const PlaceRequest = (store:Store<IServerReducer>) => (player:Player, item:unknown) => {
 
     const state = Option.some(store.getState().playerData.get(player.UserId) as values)
         .filter(values => values !== undefined && typeOf(item) === "Instance")

@@ -3,11 +3,11 @@ import serverData from "./serverData"
 import {serverStore} from "./serverData"
 
 
-export interface IReducer {
+export interface IClientReducer {
     serverData: serverStore
 }
 
-export default combineReducers<IReducer>({
+export default combineReducers<IClientReducer>({
     serverData
 })
 

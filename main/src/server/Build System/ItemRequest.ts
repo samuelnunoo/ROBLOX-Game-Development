@@ -1,5 +1,5 @@
 import { Store } from "@rbxts/rodux";
-import { IReducer } from "server/Store/Reducers";
+import { IServerReducer } from "server/Store/Reducers";
 import {Option} from "@rbxts/rust-option-result"
 import { values, playerId } from "server/Store/Reducers/playerData";
 import { setActiveItem } from "server/Store/Actions/playerAction";
@@ -11,7 +11,7 @@ import { updateLot } from "server/Store/Actions/itemAction";
 
 const ReplicatedStorage = game.GetService("ReplicatedStorage")
 
-export const isInInventory = (store:Store<IReducer>) => (itemID:unknown, player:Player) => {
+export const isInInventory = (store:Store<IServerReducer>) => (itemID:unknown, player:Player) => {
 
     const isValid = Option.some(store.getState().playerData.get(player.UserId) as values)
     .filter( (data:values) => data !== undefined)
@@ -22,7 +22,7 @@ export const isInInventory = (store:Store<IReducer>) => (itemID:unknown, player:
 }
 
 
-export const ItemRequest = (store:Store<IReducer>) => ( player:Player,itemID:unknown,) => {
+export const ItemRequest = (store:Store<IServerReducer>) => ( player:Player,itemID:unknown,) => {
    if ( isInInventory(store)(itemID,player)) {
        store.dispatch(setActiveItem(player,itemID as string))
    }
@@ -37,7 +37,7 @@ export const modelRequestWrapper = (player:Player, itemID:unknown): Model|false 
 }
 
 
-export const assignItemToLot = (store:Store<IReducer>) => (itemID:string, lotID:string) => {
+export const assignItemToLot = (store:Store<IServerReducer>) => (itemID:string, lotID:string) => {
 
    return Option.some(store.getState().itemData.get(itemID) as ItemProperties)
        .filter(values => values !== undefined)
@@ -48,7 +48,7 @@ export const assignItemToLot = (store:Store<IReducer>) => (itemID:string, lotID:
         .unwrap()
 }
 
-export const modelRequest = (store:Store<IReducer>) => (RS:ReplicatedStorage) => (player:Player, itemID:unknown): Model| false => {
+export const modelRequest = (store:Store<IServerReducer>) => (RS:ReplicatedStorage) => (player:Player, itemID:unknown): Model| false => {
 
    const result = Option.some(store.getState().playerData.get(player.UserId) as values)
         .filter( values => values !== undefined )

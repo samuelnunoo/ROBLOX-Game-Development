@@ -4,6 +4,7 @@ import { Request_ID } from "client/ReplicatedStorage/ServerGateway/Enums"
 
 const allowSet = new Set<String>()
     .add("setLot")
+    .add("addPlayer")
 
 
 const clientRemote: RemoteEvent = game.GetService("ReplicatedStorage").serverGateway

@@ -9,36 +9,15 @@ import { Request_ID } from "client/ReplicatedStorage/ServerGateway/Enums";
   //currentLot: Instance | undefined 
   //index: number;
 //}
-/** 
-interface Props {
-  test: number;
-  example: (...args: any[]) => Instance;
-  lots: Instance[];
-  isTaken?: Lots;
-}
 
-const defaults = {
-  test: 5,
-  example: (state: MyComponentState) => state.lots[state.index],
-  lots: [],
-} as Props;
 
-class LotUI extends Roact.Component<Props, MyComponentState> {
-  private running: boolean = false;
+
+/*
+class LotUI extends Roact.Component<> {
 
   constructor() {
-    super(defaults);
+    super({})
 
-    this.setState({
-      ...defaults,
-      index: 0,
-      lots: this.props.lots,
-      currentLot: this.props.lots[0]
-    } as MyComponentState);
-
-    if (this.state.isTaken) {
-      print(this.state.isTaken.get(this.state.example(this.state)));
-    }
   }
 
   public render(): Roact.Element {

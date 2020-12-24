@@ -1,6 +1,6 @@
 /// <reference types="@rbxts/testez/globals" />
 
-import { createStore, ItemEnv } from "./DefaultStore"
+import { createServerStore, ItemEnv } from "./DefaultStore"
 
 
 

@@ -1,7 +1,6 @@
 import Roact from "@rbxts/roact"
 import { Request_ID } from "client/ReplicatedStorage/ServerGateway/Enums";
 import { InventoryStuff } from "server/CSMiddleware/InventoryDataRequest"
-import ItemButton, {ItemUIProp} from "./ItemButton"
 
 interface Props { 
     grid: InventoryStuff[];
