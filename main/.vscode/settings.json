@@ -40,7 +40,6 @@
     "*tsconfig": true,
     "*tsconfig.*": true,
     "*yarn": true,
-    "*yarn.*": true,
-    "src\\types": true
+    "*yarn.*": true
   }
 }

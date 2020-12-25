@@ -7,24 +7,26 @@ export interface IImageButton {
 }
 
 interface RoactProps {
-    [Roact.Children]: Array<Roact.Element>
+    [Roact.Children]: Array<Roact.Element> | Roact.Element
 }
 
 type FunctionalComponent<T> = (props: RoactProps & T) => Roact.Element
 
 
 const ImageButton: FunctionalComponent<IImageButton> = (props) => {
+    const children = props[Roact.Children];
+    const arrayChildren = "props" in children ? [children] : children;
     return(
         <imagebutton
             Size = { new UDim2(0,249,0,324)}
             Image = { props.image }
             Event = {
                 { 
-                    MouseButton1Click:props.event(props.type)
+                    MouseButton1Click:() => props.event(props.type)
                 }
         }
         >
-            {...props[Roact.Children]}
+            {...arrayChildren}
         </imagebutton>
     ) 
 }

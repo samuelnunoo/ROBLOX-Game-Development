@@ -9,13 +9,15 @@ import claimState from "./ButtonStates/claimState"
 import visitState from "./ButtonStates/visitState"
 import { IClientReducer } from "client/ReplicatedStorage/ClientState/Reducers"
 import roactRodux from "@rbxts/roact-rodux"
+import Selection from "client/ReplicatedStorage/Lot System/Lot Selection/LotView"
 
 interface LotMenuProps {
     residential: false | string;
     business: false | string;
 }
 
-const PlayerID = game.GetService("Players").LocalPlayer.UserId
+const localPlayer = game.GetService("Players").LocalPlayer as LocalPlayer
+const PlayerID = localPlayer.UserId
 class LotMenu extends Roact.Component<LotMenuProps,{}> {
 
     constructor(props:LotMenuProps) {
@@ -27,11 +29,14 @@ class LotMenu extends Roact.Component<LotMenuProps,{}> {
     }
 
     public claimLot (type:"residential" | "business") {
-
+        //UnMount LotMenu
+        //Init LotView with type
+        const gui = localPlayer.PlayerGui.FindFirstChild("Testing")?.Destroy();
+        const claim = new Selection(type);
     }
 
     public buttonState (type:"residential" | "business") {
-        const isSet = this.props[type] === false;
+        const isSet = this.props[type] !== false;
         if (isSet) return visitState;
         else return claimState;
     }

@@ -7,4 +7,5 @@ interface Workspace extends WorldRoot {
 			LotType:StringValue
 		}
 	};
+	CameraPoint: BasePart;
 }
