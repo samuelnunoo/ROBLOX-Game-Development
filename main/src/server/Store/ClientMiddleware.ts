@@ -7,7 +7,7 @@ const allowSet = new Set<String>()
     .add("addPlayer")
 
 
-const clientRemote: RemoteEvent = game.GetService("ReplicatedStorage").serverGateway
+const serverRemote: RemoteEvent = game.GetService("ReplicatedStorage").serverRemote
 
 const DeployAction: (remote:RemoteEvent) => (action: Action) => void
  = (remote) => (action) => {
@@ -17,7 +17,7 @@ const DeployAction: (remote:RemoteEvent) => (action: Action) => void
 
 const clientMiddleware = (nextDispatch:Fn) => {
     return function (action: Action) {
-        DeployAction(clientRemote)(action)
+        DeployAction(serverRemote)(action)
         nextDispatch(action)
     }
         

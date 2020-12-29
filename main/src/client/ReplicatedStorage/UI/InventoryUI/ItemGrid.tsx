@@ -7,7 +7,7 @@ interface Props {
 }
 
 
-const serverGateway = game.GetService("ReplicatedStorage").serverGateway;
+const serverRemote = game.GetService("ReplicatedStorage").serverRemote
 export default class ItemGrid extends Roact.Component<{},Props> {
 
 
@@ -27,7 +27,7 @@ export default class ItemGrid extends Roact.Component<{},Props> {
     }
 
     private fetchData() {
-        serverGateway.FireServer(Request_ID.Inventory_Data,this);
+        serverRemote.FireServer(Request_ID.Update_Store,this);
     }
 
     public render(): Roact.Element {

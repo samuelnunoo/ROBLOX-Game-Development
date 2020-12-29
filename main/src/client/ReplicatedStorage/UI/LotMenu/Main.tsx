@@ -10,6 +10,7 @@ import visitState from "./ButtonStates/visitState"
 import { IClientReducer } from "client/ReplicatedStorage/ClientState/Reducers"
 import roactRodux from "@rbxts/roact-rodux"
 import Selection from "client/ReplicatedStorage/Lot System/Lot Selection/LotView"
+import UIManager from "../UIManager"
 
 interface LotMenuProps {
     residential: false | string;
@@ -29,10 +30,10 @@ class LotMenu extends Roact.Component<LotMenuProps,{}> {
     }
 
     public claimLot (type:"residential" | "business") {
-        //UnMount LotMenu
-        //Init LotView with type
-        const gui = localPlayer.PlayerGui.FindFirstChild("Testing")?.Destroy();
+        const gui = UIManager.get("Testing")
+        if (gui) Roact.unmount(gui)
         const claim = new Selection(type);
+    
     }
 
     public buttonState (type:"residential" | "business") {

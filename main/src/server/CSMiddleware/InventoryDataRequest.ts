@@ -1,5 +1,5 @@
 const RS = game.GetService("ReplicatedStorage")
-const serverGateway = RS.serverGateway;
+const serverRemote = RS.serverRemote
 import { Store } from "@rbxts/rodux"
 import { Option } from "@rbxts/rust-option-result"
 import { Request_ID } from "client/ReplicatedStorage/ServerGateway/Enums";
@@ -27,7 +27,7 @@ export const getInventoryDataWrapper = (plr:Player) => {
 }
 
 export const sendData = (plr:Player) => (data:InventoryStuff[]) => {
-    serverGateway.FireClient(plr,Request_ID.Inventory_Data,data)
+    serverRemote.FireClient(plr,Request_ID.Update_Store,data)
 }
 
 export const getInventoryData = (store:Store<IServerReducer>) => (plr:Player) => {

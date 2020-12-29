@@ -6,7 +6,16 @@ import { Request_ID } from "client/ReplicatedStorage/ServerGateway/Enums"
 import { processRequest, filterRequest } from "server/ServerGateway/Main"
 import { lotAction } from "server/Store/Actions/playerAction"
 import { testEnv } from "tests/Mocks/DefaultStore"
-const {player} = testEnv()
+
+
+const Players = game.GetService("Players")
+
+
+while (Players.GetPlayers().size() === 0) {
+    wait(0.25)
+}
+const player = game.GetService("Players").GetPlayers()[0]
+print(player)
 
 export = () => {
 

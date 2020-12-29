@@ -8,10 +8,6 @@
     ".vscode": true,
     "Dockerfile": true,
     "yarn.lock": true,
-    "package.json": true,
-    ".dockerignore": true,
-    "Baseplate.rbxl": true,
-    "tsconfig.json": true,
     "*.dockerignore": true,
     "*.dockerignore.*": true,
     "*.DS_Store": true,
@@ -37,9 +33,8 @@
     "*package": true,
     "*package.*": true,
     "*src.*": true,
-    "*tsconfig": true,
-    "*tsconfig.*": true,
     "*yarn": true,
-    "*yarn.*": true
+    "*yarn.*": true,
+    "yarn-error.log": true
   }
 }

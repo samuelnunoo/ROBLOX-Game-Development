@@ -16,7 +16,7 @@ export default {
     },
     [Request_ID.Active_Item]: setActiveItem,
     [Request_ID.Item_Request]: modelRequestWrapper,
-    [Request_ID.Inventory_Data]: getInventoryDataWrapper,
+    //[Request_ID.Inventory_Data]: getInventoryDataWrapper,
     [Request_ID.Lot_Request]: lotRequest
 
     

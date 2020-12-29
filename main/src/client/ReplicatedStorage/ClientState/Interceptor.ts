@@ -3,7 +3,7 @@ import { Option } from "@rbxts/rust-option-result"
 import { IClientReducer } from "./Reducers"
 import store from "./Store"
 
-const clientRemote: RemoteEvent = game.GetService("ReplicatedStorage").serverGateway
+const clientRemote: RemoteEvent = game.GetService("ReplicatedStorage").serverRemote
 
 export const initInterceptor = <S>(store:Rodux.Store<S, AnyAction>) =>
 (payload:AnyAction)  => {

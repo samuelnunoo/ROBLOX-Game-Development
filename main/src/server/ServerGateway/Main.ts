@@ -1,6 +1,6 @@
 import { Request_ID } from "client/ReplicatedStorage/ServerGateway/Enums";
 import {Option} from "@rbxts/rust-option-result";
-const serverGateway = game.GetService("ReplicatedStorage").serverGateway
+const serverRemote = game.GetService("ReplicatedStorage").serverRemote
 import commands from "server/ServerGateway/Commands"
 import { initMiddleware } from "./MiddleWare";
 

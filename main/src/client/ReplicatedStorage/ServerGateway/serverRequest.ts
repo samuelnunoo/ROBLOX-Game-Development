@@ -1,8 +1,10 @@
 import { Request_ID } from "./Enums";
-const serverGateway = game.GetService("ReplicatedStorage").serverGateway;
+const serverRemote = game.GetService("ReplicatedStorage").serverRemote
 
 export default (Request_ID:Request_ID,payload:unknown) => {
-    serverGateway.FireServer(Request_ID,payload);
+    serverRemote.FireServer(Request_ID,payload);
+    
+
 }
 
 

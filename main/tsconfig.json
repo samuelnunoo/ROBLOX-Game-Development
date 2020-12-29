@@ -12,6 +12,7 @@
 		"typeRoots": [ "node_modules/@rbxts" ],
 		"paths": {
 			"storage": ["client/ReplicatedStorage/ClientState"],
+			"starter" : ["client/StarterPlayerScripts"]
 			
 		},
 

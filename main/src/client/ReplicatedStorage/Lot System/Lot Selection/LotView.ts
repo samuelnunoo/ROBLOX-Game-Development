@@ -1,6 +1,8 @@
 const UIS = game.GetService("UserInputService")
 import {Players, Workspace} from "@rbxts/services"
 import { Grid } from "client/ReplicatedStorage/ClientState/Reducers/serverData";
+import Main from "client/ReplicatedStorage/UI/LotPreview/app"
+import UIManager from "client/ReplicatedStorage/UI/UIManager";
 
 const localPlayer = Players.LocalPlayer as LocalPlayer 
 const camera = game.Workspace.CurrentCamera as Camera;
@@ -23,7 +25,9 @@ class Selection {
 
     private inputSelection(input:InputObject) {
         if (input.UserInputType === Enum.UserInputType.MouseButton1) {
+            this.connection.Disconnect()
             this.makeSelection()
+         
         }
     }
 
@@ -32,6 +36,7 @@ class Selection {
             this.isRunning = false;
             this.selectionBox.Destroy()
             const lotID = this.result.Name
+            UIManager.mount("Preview",Main(lotID))
         }
     }
     
