@@ -9,13 +9,9 @@ import { testEnv } from "tests/Mocks/DefaultStore"
 
 
 const Players = game.GetService("Players")
-
-
-while (Players.GetPlayers().size() === 0) {
-    wait(0.25)
-}
+Players.PlayerAdded.Wait()
 const player = game.GetService("Players").GetPlayers()[0]
-print(player)
+
 
 export = () => {
 

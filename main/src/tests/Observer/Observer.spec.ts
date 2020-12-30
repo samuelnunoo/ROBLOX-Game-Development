@@ -3,18 +3,7 @@
 import {IObserver, testVersion} from "client/ReplicatedStorage/Observer/Observer"
 import { Request_ID } from "client/ReplicatedStorage/ServerGateway/Enums";
 import {notifyListeners} from "client/ReplicatedStorage/Observer/notifyListeners"
-
-class testClass implements IObserver {
-
-    private target: any;
-    constructor(target:any) {
-        this.target = target;
-    }
-    public update(value:any) {
-        this.target = true;
-        return true;
-    }
-}
+import Object from "@rbxts/object-utils";
 
 class testClass2 implements IObserver {
 
@@ -22,22 +11,31 @@ class testClass2 implements IObserver {
     constructor(target:any) {
         this.target = target;
     }
+
     public update(value:any) {
-        this.target = value
-        return true;
+        this.target = value        
+    }
+
+    public getValue() {
+        return this.target;
     }
 }
+
 
 export = () => {
     describe("subscribe",() => {
         let target = false;
-        const instance = new testClass(target)
-      
+        const instance = new testClass2(target)
+        const Observer = new testVersion()
+        Observer.subscribe(Request_ID.Lot_Request,instance)
 
-        it("should be in listeners",() => {
-            const Observer = new testVersion()
-            Observer.subscribe(Request_ID.Lot_Request,instance)
-            expect(Observer.listeners[0]).to.equal(instance)
+        it("should have proper object",() => {
+     
+            expect(Observer.listeners[0].object).to.equal(instance)
+        })
+
+        it("should have proper id",() => {
+            expect(Observer.listeners[0].id).to.equal(Request_ID.Lot_Request)
         })
 
 
@@ -47,34 +45,35 @@ export = () => {
     describe("notify",() => {
     
         it("it should invoke method",() => {
-            let target = false;
             const Observer = new testVersion()
-            const instance = new testClass(target);
+            const instance = new testClass2(false);
+
+
             Observer.subscribe(Request_ID.Lot_Request,instance)
-            Observer.notify(Request_ID.Lot_Request,{})
-            expect(target).to.equal(true)
+            Observer.notify(Request_ID.Lot_Request,true)
+            expect(instance.getValue()).to.equal(true)
         })
 
         it("should not invoke method", () => {
-            let target = false;
             const Observer = new testVersion()
-            const instance = new testClass(target);
+            const instance = new testClass2(false);
+            
             Observer.subscribe(Request_ID.Lot_Request,instance)
             Observer.notify(Request_ID.Update_Store,{})
-            expect(target).to.equal(false)
+            expect(instance.getValue()).to.equal(false)
         })
 
 
     })
 
     describe("unsubscribe",() => {
-        let target = false;
-
+     
         it('should remove object', () => {
             const Observer = new testVersion()
-            const instance = new testClass(target);
+            const instance = new testClass2(false);
             Observer.subscribe(Request_ID.Lot_Request,instance)
             Observer.unsubscribe(instance)
+
             expect(Observer.listeners.size()).to.equal(0)
       
         })
@@ -83,20 +82,23 @@ export = () => {
 
     describe("notifyListeners",() => {
 
-        let target = false 
-        const io = new testClass2(target)
+        let target = {field1:"hah"}
+        const instance = new testClass2(target)
         const Observer = new testVersion()
-        Observer.subscribe(Request_ID.Update_Store,io)
-        const payload = {
-            request: Request_ID.Update_Store,
+        Observer.subscribe(Request_ID.Update_Store,instance)
+        const data = {
             field1: 1,
             field2: 2,
-            field3: 3
+            field3: 3,
+        };
+        const payload = {
+            request: Request_ID.Update_Store,
+            data
         }
         notifyListeners(Observer)(payload)
 
         it("should have payload",() => {
-            expect(target).to.equal({field1:1,field2:2,field3:3})
+            expect((instance.getValue() as typeof data).field1).to.equal(1)
         })
 
     })

@@ -8,7 +8,8 @@ type WidenFunc<T> = ((x: T) => void) extends ((x: (...args: infer A) => infer R)
 
 type eventType = typeof clientEvents
 
-export default function <R extends keyof eventType>(request:R, payload:Parameters<eventType[R]>) { 
-    (clientEvents[request] as WidenFunc<eventType[keyof eventType]>)(...payload)
+export default function <R extends keyof eventType>
+    (request:R, ...payload:Parameters<eventType[R]>) { 
+        (clientEvents[request] as WidenFunc<eventType[keyof eventType]>)(...payload)
 
 }

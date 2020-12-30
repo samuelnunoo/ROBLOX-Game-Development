@@ -11,11 +11,7 @@ interface commands {
 }
 
 export default {
-    [Request_ID.Integration_Test]: (player:Player,payload:unknown) => {
-        
-    },
-    [Request_ID.Active_Item]: setActiveItem,
-    [Request_ID.Item_Request]: modelRequestWrapper,
+
     //[Request_ID.Inventory_Data]: getInventoryDataWrapper,
     [Request_ID.Lot_Request]: lotRequest
 

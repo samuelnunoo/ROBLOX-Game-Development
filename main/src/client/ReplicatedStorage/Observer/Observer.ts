@@ -1,7 +1,7 @@
 import { Request_ID } from "../ServerGateway/Enums"
 
 export abstract class IObserver {
-    abstract update<T>(value:T):void;
+    abstract update(value:any):void;
 }
 
 interface payload {
