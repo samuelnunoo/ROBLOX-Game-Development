@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add @rbxt/services
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add @rbxtsc/fitumi
 
 PATH: 
   C:\Program Files (x86)\Razer\ChromaBroadcast\bin;C:\Program Files\Razer\ChromaBroadcast\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\HashiCorp\Vagrant\bin;C:\Program Files (x86)\Yarn\bin\;C:\ProgramData\chocolatey\bin;C:\Program Files\PsychoPy3;C:\Program Files\PsychoPy3\DLLs;C:\Program Files\dotnet\;C:\Windows\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Users\Samuel\.cargo\bin;C:\Users\Samuel\AppData\Local\Programs\Python\Python37\Scripts\;C:\Users\Samuel\AppData\Local\Programs\Python\Python37\;C:\Users\Samuel\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\Samuel\AppData\Local\Programs\Python\Python39\;C:\Users\Samuel\AppData\Local\Microsoft\WindowsApps;C:\Users\Samuel\AppData\Local\GitHubDesktop\bin;C:\Users\Samuel\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Samuel\AppData\Roaming\npm;C:\Users\Samuel\AppData\Local\Yarn\bin;C:\Users\Samuel\AppData\Roaming\cabal\bin;C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.10.2\bin;C:\tools\msys64;;C:\Program Files\JetBrains\PyCharm 2020.2.3\bin;;C:\Users\Samuel\.dotnet\tools
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@rbxt%2fservices: Not found
+  Error: https://registry.yarnpkg.com/@rbxtsc%2ffitumi: Not found
       at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:66097:18)
       at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:140749:22)
       at Request.emit (events.js:315:20)
@@ -52,6 +52,7 @@ npm manifest:
       "@rbxts/roact-rodux": "^0.1.1",
       "@rbxts/rodux": "^1.1.0",
       "@rbxts/rust-option-result": "^0.2.1",
+      "@rbxts/services": "^1.1.2",
       "@rbxts/testez": "^0.3.1-ts.6",
       "roblox-ts": "^1.0.0-beta.10",
       "typescript": "^4.0.3"
@@ -95,6 +96,11 @@ Lockfile:
     version "0.2.1"
     resolved "https://registry.yarnpkg.com/@rbxts/rust-option-result/-/rust-option-result-0.2.1.tgz#9f5470d3f8fa8c03baf50db68968ac58181d7bbe"
     integrity sha512-FuBP4y3AjqgirN9/wsMXNyx+ITDgttX6rKUg6aSn2acDLa12dmoB+F5FJWhisQSqlBXpRAAoxrktmZJYt8o1wA==
+  
+  "@rbxts/services@^1.1.2":
+    version "1.1.2"
+    resolved "https://registry.yarnpkg.com/@rbxts/services/-/services-1.1.2.tgz#56e165547e66ee28ecb557c50253384605e35153"
+    integrity sha512-vxlo00Q/F1Yq3yGa5jisI1lkWuByJzLs2rfidA4e0wkLCBR0Od+BG55TBMzptCVUZjHUSefif4Mtl3d3a6IxyA==
   
   "@rbxts/testez@^0.3.1-ts.6":
     version "0.3.1-ts.6"

@@ -85,20 +85,16 @@ export = () => {
         let target = {field1:"hah"}
         const instance = new testClass2(target)
         const Observer = new testVersion()
-        Observer.subscribe(Request_ID.Update_Store,instance)
-        const data = {
-            field1: 1,
-            field2: 2,
-            field3: 3,
-        };
+        Observer.subscribe(Request_ID.Lot_Request,instance)
+      
         const payload = {
-            request: Request_ID.Update_Store,
-            data
+            request: Request_ID.Lot_Request,
+            data: false
         }
         notifyListeners(Observer)(payload)
 
         it("should have payload",() => {
-            expect((instance.getValue() as typeof data).field1).to.equal(1)
+            expect(instance.getValue()).to.equal(false)
         })
 
     })

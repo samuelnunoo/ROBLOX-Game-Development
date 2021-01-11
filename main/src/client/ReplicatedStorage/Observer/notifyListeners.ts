@@ -13,11 +13,11 @@ export interface IObserverData<R extends keyof ObserverTypes> {
 }
 
 interface internal {
-    request: keyof ObserverTypes;
+    request: Request_ID;
     data: unknown;
 }
 export const notifyListeners = (observer:typeof Observer) => (payload:internal) => {
-    const {request,data} = payload;
+    const {request,data} = payload as internal
     observer.notify(request,data)
 
 }

@@ -7,6 +7,11 @@
   resolved "https://registry.yarnpkg.com/@rbxts/compiler-types/-/compiler-types-1.0.0-beta.10.0.tgz#3b1496f88cc43bb072bf84dc5485bccecc35a5b8"
   integrity sha512-nP7n2G3wVs1VcI/kHTe/LUdjVhROTKYLyV+wKHyMQ5AawUy5Ivg1p+p5Nt8UnEekzlqxs+zI9sJDFr+tBxx52A==
 
+"@rbxts/fitumi@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@rbxts/fitumi/-/fitumi-1.0.4.tgz#83dcafd08867f1f3165e5922798fd5c31ea378c5"
+  integrity sha512-llh1flTYZP+/63QnIRG0PWLRMvgmfuKyvK7Stk2KVqQUFZRuYZnLcfgtErBmHonHceueBdMIh/3Bj7nLbHZCEw==
+
 "@rbxts/object-utils@^1.0.4":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@rbxts/object-utils/-/object-utils-1.0.4.tgz#c53d80f89e75c401365446be63fa1396bc2cffe7"
