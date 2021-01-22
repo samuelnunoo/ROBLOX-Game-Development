@@ -34,8 +34,6 @@ export const getLotPoints = (lot: BasePart) => {
     return { frontLeft, backRight }
 }
 
-
-
 interface IMove {
     val:number;
     offset:number;
@@ -70,82 +68,11 @@ export class MoveFurniture {
         this.lot = lot 
 
         //setup Initial Clamp Values 
-        this.updateXZPoints()
+        const {xPoints,zPoints} = MoveFurniture.updateXZPoints(furniture,lot)
+        this.setXZPoints(xPoints,zPoints)
+
         this.moveLoop()
     }
-
-     static getMinMaxPoint = (lotPoints: ReturnType<typeof getLotPoints>, axis: "X" | "Z") => {
-        const p1 = lotPoints.frontLeft[axis]
-        const p2 = lotPoints.backRight[axis]
-        const min = math.min(p1, p2)
-        const max = math.max(p1, p2)
-
-        return { min, max }
-    }
-
-     public handleEvents = (input:InputObject) => {
-         print(input.UserInputType)
-        if (input.UserInputType === Enum.UserInputType.Keyboard) {
-            if(input.KeyCode === Enum.KeyCode.R) this.rotatePart(this.furniture,1)
-            if (input.KeyCode === Enum.KeyCode.T) this.rotatePart(this.furniture,-1)
-
-        }
-        
-
-     }
-     static calculateValue = (primaryPart:BasePart,reference:Vector3,objectPoints:ReturnType<typeof getBorderPoints>) => {
-        const xVector = UnitFunctions.getClosestVector3(reference,objectPoints,"X")
-        const zVector = UnitFunctions.getClosestVector3(reference,objectPoints,"Z")
-        const xDistance = UnitFunctions.getEdgeDistance(xVector,primaryPart.Position,"X")
-        const zDistance = UnitFunctions.getEdgeDistance(zVector,primaryPart.Position,"Z")
-
-        const x = {val:reference.X, offset: xDistance } as IMove
-        const z = {val:reference.Z, offset: zDistance } as IMove
-
-        return {x,z}
-    }
-
-    static getClampMinMax = (first:IMove,second:IMove) => {
-        let min = 0;
-        let max = 0;
-
-        if (first.val < second.val) {
-            min = first.val + first.offset
-            max = second.val - second.offset
-        }
-
-        else {
-            min = second.val + second.offset
-            max = first.val - first.offset
-        }
-
-        return {min, max}
-    }
-
-    public updateXZPoints = () => {
-        this.points = getBorderPoints(this.furniture.PrimaryPart as BasePart)
-        const lotPoints = getLotPoints(this.lot)
-        const p1 = MoveFurniture.calculateValue(this.furniture.PrimaryPart as BasePart,lotPoints.backRight,this.points)
-        const p2 = MoveFurniture.calculateValue(this.furniture.PrimaryPart as BasePart,lotPoints.frontLeft,this.points)
-        this.xPoints = MoveFurniture.getClampMinMax(p1.x,p2.x)
-        this.zPoints = MoveFurniture.getClampMinMax(p1.z,p2.z)
-    }
-
-    rotatePart = (object:Model,dir:1|-1) => {
-        //to set rotation
-        const rotation = 45 * dir
-        if (object.PrimaryPart) {
-            const newCFrame = object.PrimaryPart.CFrame.mul(CFrame.Angles(0,math.rad(rotation),0))
-            object.SetPrimaryPartCFrame(newCFrame)
-
-            //to update xzPoints
-            this.updateXZPoints()
-
-
-        }
-
-    }
-
     public moveLoop = () => {
         while (true) {
             wait()
@@ -167,6 +94,95 @@ export class MoveFurniture {
             }
         }
     }
+    public setXZPoints = (xPoints:IMinMax,zPoints:IMinMax) => {
+        this.xPoints = xPoints;
+        this.zPoints = zPoints;
+    }
+    public setFurniturePoints = (points:ReturnType<typeof getBorderPoints>) => {
+        this.points = points
+    }
+    public update = () => {
+        const {xPoints,zPoints} = MoveFurniture.updateXZPoints(this.furniture,this.lot)
+        this.setXZPoints(xPoints,zPoints)
+    }
+    public handleEvents = (input:InputObject) => {
+
+        if (input.UserInputType === Enum.UserInputType.Keyboard) {
+
+            if (input.KeyCode === Enum.KeyCode.R) {
+                MoveFurniture.rotatePart(this.furniture,1)
+                this.update()
+            }
+
+            if (input.KeyCode === Enum.KeyCode.T) {
+                MoveFurniture.rotatePart(this.furniture,-1)
+                this.update()
+            }
+        }
+        
+
+     }
+
+     //static methods
+     static getMinMaxPoint = (lotPoints: ReturnType<typeof getLotPoints>, axis: "X" | "Z") => {
+        const p1 = lotPoints.frontLeft[axis]
+        const p2 = lotPoints.backRight[axis]
+        const min = math.min(p1, p2)
+        const max = math.max(p1, p2)
+
+        return { min, max }
+    }
+     static calculateValue = (primaryPart:BasePart,reference:Vector3,objectPoints:ReturnType<typeof getBorderPoints>) => {
+        const xVector = UnitFunctions.getClosestVector3(reference,objectPoints,"X")
+        const zVector = UnitFunctions.getClosestVector3(reference,objectPoints,"Z")
+        const xDistance = UnitFunctions.getEdgeDistance(xVector,primaryPart.Position,"X")
+        const zDistance = UnitFunctions.getEdgeDistance(zVector,primaryPart.Position,"Z")
+
+        const x = {val:reference.X, offset: xDistance } as IMove
+        const z = {val:reference.Z, offset: zDistance } as IMove
+
+        return {x,z}
+    }
+    static getClampMinMax = (first:IMove,second:IMove) => {
+        let min = 0;
+        let max = 0;
+
+        if (first.val < second.val) {
+            min = first.val + first.offset
+            max = second.val - second.offset
+        }
+
+        else {
+            min = second.val + second.offset
+            max = first.val - first.offset
+        }
+
+        return {min, max}
+    }
+    static updateXZPoints = (furniture:Model,lot:BasePart) => {
+        const points = getBorderPoints(furniture.PrimaryPart as BasePart)
+        const lotPoints = getLotPoints(lot)
+        const p1 = MoveFurniture.calculateValue(furniture.PrimaryPart as BasePart,lotPoints.backRight,points)
+        const p2 = MoveFurniture.calculateValue(furniture.PrimaryPart as BasePart,lotPoints.frontLeft,points)
+        const xPoints = MoveFurniture.getClampMinMax(p1.x,p2.x)
+        const zPoints = MoveFurniture.getClampMinMax(p1.z,p2.z)
+        return {xPoints,zPoints}
+    }
+    static rotatePart = (object:Model,dir:1|-1) => {
+        //to set rotation
+        const rotation = 45 * dir
+        if (object.PrimaryPart) {
+            const newCFrame = object.PrimaryPart.CFrame.mul(CFrame.Angles(0,math.rad(rotation),0))
+            object.SetPrimaryPartCFrame(newCFrame)
+        }
+
+    }
+
+    static placeItem = (object:Model) => {
+        return object.PrimaryPart?.CFrame
+    }
+
+  
     
 }
 
