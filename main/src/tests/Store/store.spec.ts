@@ -15,8 +15,8 @@ const newPlayer = <T>(store:Store<T, AnyAction>) => (plr:Player): void => {
     const action = addPlayerAction(plr)
     store.dispatch(action)
 }
-const {player} = testEnv()
 
+const {player} = testEnv()
 
 export = () => {
 
@@ -26,7 +26,7 @@ export = () => {
         })
     })
 
-    describe("Interceptor",() => {
+    describe("Interceptor", () => {
 
         const client = createClientStore()
         const middleware = mockMiddleware(client)
@@ -66,8 +66,4 @@ export = () => {
       
     
     });
-
-    
-
-
 }

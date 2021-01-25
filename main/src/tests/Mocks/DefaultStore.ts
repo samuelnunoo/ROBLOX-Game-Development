@@ -1,6 +1,5 @@
 import {Store, AnyAction, Action} from "@rbxts/rodux"
 import { inventoryAction, setActiveItem, lotAction, setActiveLot, addPlayerAction} from "server/Store/Actions/playerAction"
-import {itemPayload} from "server/Store/Actions/itemAction"
 import { IServerReducer } from "server/Store/Reducers"
 import {IClientReducer} from "client/ReplicatedStorage/ClientState/Reducers/index"
 import serverReducer from "server/Store/Reducers/index"
@@ -12,6 +11,7 @@ import { updateAction } from "server/Store/Actions/itemAction"
 import dispatchRequest from "client/ReplicatedStorage/ServerGateway/dispatchRequest"
 import { Request_ID } from "client/ReplicatedStorage/ServerGateway/Enums"
 import Interceptor, { initInterceptor } from "client/ReplicatedStorage/ClientState/Interceptor"
+import { Items } from "server/Items/Enums"
 
 interface IInventory {
     itemId: string;
@@ -51,16 +51,11 @@ export const mockActiveItem = (player:Player) => (active:IInventory) => {
      return store 
 }
 
-export const getItemProp = (itemID:string) => (owner:string) => (rarity:"High" | "Low"| "Medium") => (model:Model) => ({
+export const getItemProp = (itemID:string) => (owner:number) => (rarity:"High" | "Low"| "Medium") => (template:Items) => ({
     id:itemID,
-    model,
-    style: new Map(),
-    rarity,
     owner,
-    lotSave:undefined,
-    orientation:undefined,
-    offset:undefined
-} as itemPayload)
+    template
+} as ItemProperties)
  
 export const setLot = (store:Store<IServerReducer>) => (player:Player) => (LotId:string) => {
     const action = setActiveLot(player, new Instance("Part"),LotId)
@@ -76,13 +71,9 @@ export const ItemEnv = ()  => {
     const _rarity = ["High","Low","Medium"]
     const rarity = _rarity[math.random(2)] as "High" | "Low" | "Medium"
  
-    const model = new Instance("Model")
-    model.Name = "Test"
-    model.Parent = RS.Models 
+    const model = Items.chair
     const itemID = tostring(math.random(1235304))
-    const owner = tostring(player.UserId)
-
-    
+    const owner = player.UserId
 
     const prop = getItemProp(itemID)(owner)(rarity)(model)
     const newStore = setInventory(setItemProp(store)(prop))(player)([{itemId:itemID, add:true}])
@@ -95,7 +86,7 @@ export const ItemEnv = ()  => {
 
 }
 
-export const setItemProp = (store:Store<IServerReducer>) => (itemProps:itemPayload) => {
+export const setItemProp = (store:Store<IServerReducer>) => (itemProps:ItemProperties) => {
     store.dispatch(updateAction(itemProps))
     return store 
 }

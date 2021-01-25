@@ -9,11 +9,10 @@ export interface  ItemUIProp {
 
 }
 
+//@todo make updates here 
 export default function ItemButton(props:InventoryStuff) {
     const camera = new Instance("Camera");
-    const {model,rarity} = props
 
-    const bounds = model.GetBoundingBox();
 
     return 
         <viewportframe
